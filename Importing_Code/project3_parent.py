@@ -1,6 +1,7 @@
 import pandas as pd 
 import numpy as np
 import os
+import joblib 
 
 class Project3Parent():
     """This is the parent class for the all machine learning of project3 
@@ -9,17 +10,36 @@ class Project3Parent():
     
     ATTRIBUTE
     ---------
-    current_path = type:String, 
-    csv_path = type:String,
+    --None--
 
     FUNCTION
     --------
-
+    getCurrentPath() : 
+        Return : str
+    makeDF():
+        Return : pandas.DataFrame
+    getDF(): 
+        Return : pandas.DataFrame
+    getCsvPath():
+        Return : str
+    setCurrentPath() : 
+        Parameters : str
+    setDF(): 
+        Parameters : pandas.DataFrame
+    setCsvPath():
+        Parameters : str
+    saveModelUsingJoblib():
+        Parameters : model, filename_without_extension : str
+        Return : bool
+    getModelUsingJoblib():
+        Parameters : filename_without_extension : str
+        Return : model/False # model if "model" exists and "Flase" if the model doesnot exist
+     
     """
 
     def __init__(self):
         self.current_path = os.getcwd()
-        self.csv_path = 'G:\Subash\BECOMP\Project 3\Project Coding Part\Project Code\Study-and-Analysis-of-Breast-Cancer-Using-Genomics\Data\supervised_learning\output_dataset\gse_2034_processed_data.csv'
+        self.csv_path = 'G:\\Subash\\BECOMP\\Project 3\\Project Coding Part\\Project Code\\Study-and-Analysis-of-Breast-Cancer-Using-Genomics\\Data\\supervised_learning\\output_dataset\\gse_2034_processed_data.csv'
         self.df = None
         # making dataframe
         self.makeDF()
@@ -98,3 +118,59 @@ class Project3Parent():
             String -- set the current path of command line
         """ 
         self.csv_path = csv_path
+
+    # save the model using joblib
+    def saveModelUsingJoblib(self, model,filename_without_extension : str) -> bool :
+        """This function saves "scikit learn" library's models using joblib
+        
+        Arguments:
+            model {model_of_scikit_learn} -- One of the models of scikit learn
+            filename_without_extension {str} -- the filename without extension should be mentioned here
+        
+        Returns:
+            bool -- if successful return true and if unsuccessful false
+        """
+        ret_value = True
+
+        try : 
+            # Save the model as a pickle in a file 
+            joblib.dump(model, filename_without_extension+'.pkl') 
+        except Exception as e:
+            print("-----"*20) 
+            print("\t"*25,"\n******THE MODEL IS NOT SAVED (MODEL SAVE ERROR)******")
+            print("-----"*20)
+            print("\t"*20,"----"*5,"EXCEPTION MESSAGE","----"*5)
+            print(e)
+            print("-----"*20) 
+            print("\t"*25,"\n******THE MODEL IS NOT SAVED END******")
+            print("-----"*20)
+            ret_value =  False
+
+        return ret_value
+
+    # save the model using joblib
+    def getModelUsingJoblib(self, filename_without_extension : str) :
+        """This function get "scikit learn" library's models which were saved using joblib
+        
+        Arguments:
+            filename_without_extension {str} -- the filename without extension should be mentioned here
+        
+        Returns:
+            model -- if successful return saved "MODEL" and if unsuccessful "False"
+        """
+        model = False
+        
+        try : 
+            # Save the model as a pickle in a file 
+            model = joblib.load(filename_without_extension+'.pkl')
+        except Exception as e:
+            print("-----"*20) 
+            print("\t"*25,"\n******THE MODEL IS NOT LOADED (MODEL LOAD ERROR)******")
+            print("-----"*20)
+            print("\t"*20,"----"*5,"EXCEPTION MESSAGE","----"*5)
+            print(e)
+            print("-----"*20) 
+            print("\t"*25,"\n******THE MODEL IS NOT LOADED END******")
+            print("-----"*20)
+            
+        return model
