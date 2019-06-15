@@ -24,6 +24,10 @@ class GenomicsKNN(Project3Parent):
         print("Accuracy Train : ",accuracy_dict['acc_train'])
         print("Accuracy Test : ",accuracy_dict['acc_test'])
 
+        self.model = clf
+        
+        return clf
+
     def classification(self,x_train : np.array ,y_train : np.array) -> neighbors.KNeighborsClassifier() :        
         """This returns the KNeighbours Classification Model
         
@@ -58,3 +62,15 @@ class GenomicsKNN(Project3Parent):
         self.acc_test = clf.score(x_test,y_test)
         
         return {'acc_train': self.acc_train,'acc_test' : self.acc_test}
+
+    def predict(self,x : np.array) -> np.array :
+        """This method predicts the value given the input data, use trainModel() before this method
+        
+        Arguments:
+            x {np.array} -- The required 'x' variables to predict the result
+        
+        Returns:
+            np.array -- Prediction of the data, if multiple data given as input an array is return as output
+        """
+        y = self.model.predict(x)
+        return y

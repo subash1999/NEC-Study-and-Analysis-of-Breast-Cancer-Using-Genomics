@@ -38,6 +38,10 @@ class GenomicsLR(Project3Parent):
         print("Accuracy Train : ",accuracy_dict['acc_train'])
         print("Accuracy Test : ",accuracy_dict['acc_test'])
 
+        self.model = clf
+
+        return clf
+
     
 
     def classification(self,x_train : np.array ,y_train : np.array ,number_of_jobs: int = -1 ) -> LinearRegression :        
@@ -70,7 +74,11 @@ class GenomicsLR(Project3Parent):
         y_out = clf.predict(x)
         y_test_predict = []
         for y in y_out :
-            y_test_predict.append(round(y))
+            if y>= 0.5 :
+                y_test_predict.append(1)
+            else:
+                y_test_predict.append(0)
+            # y_test_predict.append(round(y))
         return np.array(y_test_predict)        
     
     def accuracyOfModel(self,clf : LinearRegression ,x_train : np.array ,y_train : np.array,y_test : np.array ,y_test_predict : np.array) -> dict:
@@ -108,3 +116,15 @@ class GenomicsLR(Project3Parent):
             if y_predicted[k] == y:
                 match += 1
         return match/count         
+
+    def predict(self,x : np.array ) -> np.array :
+        """This method predicts the value given the input data, use trainModel() before this method
+        
+        Arguments:
+            x {np.array} -- The required 'x' variables to predict the result
+        
+        Returns:
+            np.array -- Prediction of the data, if multiple data given as input an array is return as output
+        """
+        y = self.predictData(self.model , x )
+        return y

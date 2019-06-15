@@ -187,5 +187,5 @@ class Project3Parent():
         df = self.getDF().drop(columns= ['GEO_ACC'] )
         y = np.array(df['relapse'])
         x = np.array(df.drop(columns= ['relapse']))
-        x_train, x_test, y_train, y_test = model_selection.train_test_split(x,y,test_size=test_size_input)
-        return (x_train,x_test,y_train,y_test)
+        self.x_train, self.x_test, self.y_train, self.y_test = model_selection.train_test_split(x,y,test_size=test_size_input)
+        return (self.x_train, self.x_test, self.y_train, self.y_test)
