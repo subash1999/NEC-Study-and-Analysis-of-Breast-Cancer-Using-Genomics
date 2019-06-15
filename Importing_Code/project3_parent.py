@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 import joblib 
+from sklearn import model_selection
 
 class Project3Parent():
     """This is the parent class for the all machine learning of project3 
@@ -174,3 +175,17 @@ class Project3Parent():
             print("-----"*20)
             
         return model
+    def splitDataToTrainTest(self,test_size_input: float = 0.2 ) -> (np.array,np.array,np.array,np.array):
+        """It splits the data to train and test with the test_size
+        
+        Arguments:
+            test_size_input {float} -- test_data size fraction (default = 0.2 : float)
+            
+        Returns:
+            tuple -- tuple contains (x_train,x_test,y_train,y_test) of all np.array type
+        """
+        df = self.getDF().drop(columns= ['GEO_ACC'] )
+        y = np.array(df['relapse'])
+        x = np.array(df.drop(columns= ['relapse']))
+        x_train, x_test, y_train, y_test = model_selection.train_test_split(x,y,test_size=test_size_input)
+        return (x_train,x_test,y_train,y_test)

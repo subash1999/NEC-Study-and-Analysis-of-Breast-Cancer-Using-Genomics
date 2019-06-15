@@ -1,11 +1,10 @@
 import pandas as pd 
 import numpy as np
 import os
-from sklearn import preprocessing, svm, model_selection
+from sklearn import preprocessing, svm
 from sklearn.linear_model import LinearRegression
 
 from project3_parent import Project3Parent
-
 
 class GenomicsLR(Project3Parent):
     """This performs the linear regression on our data
@@ -39,20 +38,7 @@ class GenomicsLR(Project3Parent):
         print("Accuracy Train : ",accuracy_dict['acc_train'])
         print("Accuracy Test : ",accuracy_dict['acc_test'])
 
-    def splitDataToTrainTest(self,test_size_input: float = 0.2 ) -> (np.array,np.array,np.array,np.array):
-        """It splits the data to train and test with the test_size
-        
-        Arguments:
-            test_size_input {float} -- test_data size fraction (default = 0.2 : float)
-            
-        Returns:
-            tuple -- tuple contains (x_train,x_test,y_train,y_test) of all np.array type
-        """
-        df = self.getDF().drop(columns= ['GEO_ACC'] )
-        y = np.array(df['relapse'])
-        x = np.array(df.drop(columns= ['relapse']))
-        x_train, x_test, y_train, y_test = model_selection.train_test_split(x,y,test_size=test_size_input)
-        return (x_train,x_test,y_train,y_test)
+    
 
     def classification(self,x_train : np.array ,y_train : np.array ,number_of_jobs: int = -1 ) -> LinearRegression :        
         """This returns the Linear Classification Model
@@ -122,6 +108,3 @@ class GenomicsLR(Project3Parent):
             if y_predicted[k] == y:
                 match += 1
         return match/count         
-
-g = GenomicsLR()
-g.trainModel()
