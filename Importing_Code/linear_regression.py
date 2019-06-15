@@ -70,7 +70,15 @@ class GenomicsLR(Project3Parent):
         
         Returns:
             np.array -- The value predicted for 'x' input
-        """
+        """        
+        x = np.array(x)
+        if len(x.shape) == 1 :
+            temp = []
+            temp.append(x)
+            x = temp[:]
+            del(temp)
+        x = np.array(x)
+        x = x.reshape(len(x),-1)
         y_out = clf.predict(x)
         y_test_predict = []
         for y in y_out :
@@ -128,3 +136,8 @@ class GenomicsLR(Project3Parent):
         """
         y = self.predictData(self.model , x )
         return y
+g = GenomicsLR()
+g.trainModel()
+y = g.predict([g.x_train[10],g.x_train[15]])
+print('Predicted : ',y)
+print('Exact : ',g.y_train[10],g.y_train[15])

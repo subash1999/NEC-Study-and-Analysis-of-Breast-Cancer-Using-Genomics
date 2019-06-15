@@ -72,5 +72,13 @@ class GenomicsKNN(Project3Parent):
         Returns:
             np.array -- Prediction of the data, if multiple data given as input an array is return as output
         """
+        x = np.array(x)
+        if len(x.shape) == 1 :
+            temp = []
+            temp.append(x)
+            x = temp[:]
+            del(temp)
+        x = np.array(x)
+        x = x.reshape(len(x),-1)
         y = self.model.predict(x)
         return y
