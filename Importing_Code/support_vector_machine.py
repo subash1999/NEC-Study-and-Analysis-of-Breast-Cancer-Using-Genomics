@@ -1,22 +1,22 @@
 import numpy as np
 import pandas as pd
-from sklearn import preprocessing, neighbors
+from sklearn import preprocessing, svm
 
 from project3_parent import Project3Parent
 
-class GenomicsKNN(Project3Parent):
+class GenomicsSVC(Project3Parent):
     
     def __init__(self):
         super().__init__()
 
-    def trainModel(self,test_size_input: int =0.01) -> neighbors.KNeighborsClassifier() :
-        """This method trains the model with KNN classification, before it call makeDF()
+    def trainModel(self,test_size_input: int =0.2) -> svm.SVC() :
+        """This method trains the model with SVC classification, before it call makeDF()
         
         Keyword Arguments:
             test_size_input {float} -- Fraction of data used for testing (default: {0.2:float})
             
         Returns:
-            neighbors.KNeighborsClassifier() -- KNN Model of the given data
+            svm.SVC() -- KNN Model of the given data
         """
         x_train,x_test,y_train,y_test = self.splitDataToTrainTest(test_size_input) 
         clf = self.classification(x_train,y_train)
@@ -28,8 +28,8 @@ class GenomicsKNN(Project3Parent):
         
         return clf
 
-    def classification(self,x_train : np.array ,y_train : np.array) -> neighbors.KNeighborsClassifier() :        
-        """This returns the KNeighbours Classification Model
+    def classification(self,x_train : np.array ,y_train : np.array) -> svm.SVC() :        
+        """This returns the Support Vector Method Classification Model
         
         Arguments:
             x_train {np.array} -- The train data x
@@ -39,13 +39,13 @@ class GenomicsKNN(Project3Parent):
             number_of_jobs {int} -- number of jobs done parallely (default: {-1:int})
         
         Returns:
-            neighbors.KNeighborsClassifier -- It is a KNeighborsClassifier model
+            svm.SVC() -- It is a Support Vector Machine Classifier model
         """
-        clf = neighbors.KNeighborsClassifier()
+        clf = svm.SVC()
         clf.fit(x_train,y_train)
         return clf
 
-    def accuracyOfModel(self,clf : neighbors ,x_train : np.array ,y_train : np.array,x_test : np.array ,y_test : np.array) -> dict:
+    def accuracyOfModel(self,clf : svm.SVC() ,x_train : np.array ,y_train : np.array,x_test : np.array ,y_test : np.array) -> dict:
         """Calculates accuracy of model
         
         Arguments:

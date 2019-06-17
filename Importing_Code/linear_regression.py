@@ -136,8 +136,3 @@ class GenomicsLR(Project3Parent):
         """
         y = self.predictData(self.model , x )
         return y
-g = GenomicsLR()
-g.trainModel()
-y = g.predict([g.x_train[10],g.x_train[15]])
-print('Predicted : ',y)
-print('Exact : ',g.y_train[10],g.y_train[15])
