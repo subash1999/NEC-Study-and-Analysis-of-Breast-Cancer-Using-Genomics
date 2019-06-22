@@ -15,7 +15,7 @@ class GenomicsKMeans(Project3Parent):
         
         Keyword Arguments:
             test_size_input {float} -- Fraction of data used for testing (default: {0.2:float})
-            number_of_cluster {int} -- number of clusters the data is to be categorized
+            number_of_cluster {int} -- number of clusters the data is to be categorized (default : {2 : int})
             
         Returns:
             sklearn.linear_model -- KMeans Model of the given data
@@ -24,7 +24,8 @@ class GenomicsKMeans(Project3Parent):
         clf = self.classification(x_train,y_train, no_of_cluster)
                 
         self.model = clf
-        print(silhouette_score(x_train, clf.labels_))
+        self.silhouette_score = silhouette_score(x_train, clf.labels_)
+
         return clf
 
     def classification(self,x_train : np.array ,y_train : np.array, no_of_cluster = 2) -> KMeans() :        
@@ -43,23 +44,3 @@ class GenomicsKMeans(Project3Parent):
         clf = KMeans(n_clusters = no_of_cluster)
         clf.fit(x_train)
         return clf
-
-    def predict(self,x : np.array) -> np.array :
-        """This method predicts the value given the input data, use trainModel() before this method
-        
-        Arguments:
-            x {np.array} -- The required 'x' variables to predict the result
-        
-        Returns:
-            np.array -- Prediction of the data, if multiple data given as input an array is return as output
-        """
-        x = np.array(x)
-        if len(x.shape) == 1 :
-            temp = []
-            temp.append(x)
-            x = temp[:]
-            del(temp)
-        x = np.array(x)
-        x = x.reshape(len(x),-1)
-        y = self.model.predict(x)
-        return y
