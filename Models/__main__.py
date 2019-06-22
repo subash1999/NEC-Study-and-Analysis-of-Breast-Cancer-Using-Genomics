@@ -2,28 +2,22 @@ from support_vector_machine import GenomicsSVC
 from linear_regression import GenomicsLR
 from k_nearest_neighbour import GenomicsKNN
 from k_means import GenomicsKMeans
-from decision_tree import GenomicsDT
 from bernouli_nb import GenomicsBNB
 from complement_nb import GenomicsCNB
 from gaussian_nb import GenomicsGNB
 from multinomial_nb import GenomicsMNB
+from decision_tree_classification import GenomicsDTC
+from decision_tree_regression import GenomicsDTR
 
-print("*"*8,"\n\n Bernouli : ","*"*8)
-g = GenomicsBNB()
-g.trainModel(test_size_input = 0.5)
 
-print("*"*8,"\n\n Complement : ","*"*8)
-g = GenomicsCNB()
-g.trainModel(test_size_input = 0.5)
+print("*"*8,"\t\t Classification : ","*"*8)
+g = GenomicsDTC()
+g.trainModel()
 
-print("*"*8,"\n\n Gaussian : ","*"*8)
-g = GenomicsGNB()
-g.trainModel(test_size_input = 0.5)
 
-print("*"*8,"\n\n Multinomial : ","*"*8)
-g = GenomicsMNB()
-g.trainModel(test_size_input = 0.5)
-
+print("*"*8,"\t\t Regression : ","*"*8)
+g = GenomicsDTR()
+g.trainModel()
 # print("\nSupport Vector Machine")
 # g = GenomicsKMeans()
 # g.trainModel()

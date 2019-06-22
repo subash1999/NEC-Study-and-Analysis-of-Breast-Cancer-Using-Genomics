@@ -12,8 +12,11 @@ class GenomicsDT(Project3Parent):
     def trainModel(self, test_size_input = 0.2 ):
         x_train,x_test,y_train,y_test = self.splitDataToTrainTest(test_size_input) 
         clf = self.classification(x_train,y_train)
-        
         self.model = clf
+        
+        accuracy_dict = self.accuracyOfModel(clf,x_train,y_train,x_test,y_test)
+        print("Accuracy Train : ",accuracy_dict['acc_train'])
+        print("Accuracy Test : ",accuracy_dict['acc_test'])   
 
         return clf
 
@@ -23,7 +26,7 @@ class GenomicsDT(Project3Parent):
 
         return clf
 
-    def accuracy(self):
+    def accuracyOfModel(self,clf : tree ,x_train : np.array ,y_train : np.array,x_test : np.array ,y_test : np.array) -> dict:
         acc_train = self.model.score(self.x_train, self.y_train)
         acc_test = self.model.score (self.x_test, self.y_test)
 
