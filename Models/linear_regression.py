@@ -1,7 +1,5 @@
-import pandas as pd 
 import numpy as np
-import os
-from sklearn import preprocessing, svm
+import pandas as pd
 from sklearn.linear_model import LinearRegression
 
 from project3_parent import Project3Parent

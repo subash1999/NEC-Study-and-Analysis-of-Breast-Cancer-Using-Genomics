@@ -1,6 +1,6 @@
 import numpy as np
-import pandas as pd
 from sklearn.cluster import KMeans
+import pandas as pd
 from sklearn.metrics import silhouette_score
 
 from project3_parent import Project3Parent

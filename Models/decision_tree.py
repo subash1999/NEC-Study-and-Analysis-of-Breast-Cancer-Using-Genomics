@@ -1,5 +1,5 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 from sklearn import tree
 
 from project3_parent import Project3Parent
