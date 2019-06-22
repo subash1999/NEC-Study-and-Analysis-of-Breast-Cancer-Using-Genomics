@@ -10,19 +10,19 @@ from multinomial_nb import GenomicsMNB
 
 print("*"*8,"\n\n Bernouli : ","*"*8)
 g = GenomicsBNB()
-g.trainModel()
+g.trainModel(test_size_input = 0.5)
 
 print("*"*8,"\n\n Complement : ","*"*8)
 g = GenomicsCNB()
-g.trainModel()
+g.trainModel(test_size_input = 0.5)
 
 print("*"*8,"\n\n Gaussian : ","*"*8)
 g = GenomicsGNB()
-g.trainModel()
+g.trainModel(test_size_input = 0.5)
 
 print("*"*8,"\n\n Multinomial : ","*"*8)
 g = GenomicsMNB()
-g.trainModel()
+g.trainModel(test_size_input = 0.5)
 
 # print("\nSupport Vector Machine")
 # g = GenomicsKMeans()
