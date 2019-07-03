@@ -1,11 +1,13 @@
 import numpy as np
 import pandas as pd
 from sklearn import tree
+from abc import ABC, abstractmethod
 
 from project3_parent import Project3Parent
 
-class GenomicsDT(Project3Parent): 
 
+class GenomicsDT(Project3Parent,ABC): 
+    """Abstract Class For the "Decision Tree Method" : inherits Project3Parent"""
     def __int__(self):
         super().__init__()
 
@@ -20,6 +22,7 @@ class GenomicsDT(Project3Parent):
 
         return clf
 
+    @abstractmethod
     def classification(self, x_train : np.array , y_train : np.array ) -> tree :
         clf = tree.DecisionTreeClassifier()
         clf.fit(x_train, y_train)
@@ -66,3 +69,33 @@ class GenomicsDT(Project3Parent):
         tree.plot_tree(self.model) 
 
         return plot 
+
+
+class GenomicsDTC(GenomicsDT):
+    """Decision Tree Classifier, a class that extends GenomicsDT Class
+    Implements Decision Tree Classifier For Regression
+    
+    """
+    def __init__(self):
+        super().__init__()
+        
+    def classification(self, x_train : np.array , y_train : np.array ) -> tree :
+            clf = tree.DecisionTreeClassifier()
+            clf.fit(x_train, y_train)
+
+            return clf
+
+class GenomicsDTR(GenomicsDT):
+    
+    """Decision Tree Regression, a class that extends GenomicsDT Class
+    Implements Decision Tree Regression For Classification
+    
+    """
+    def __init__(self):
+        super().__init__()
+        
+    def classification(self, x_train : np.array , y_train : np.array ) -> tree :
+            clf = tree.DecisionTreeRegressor()
+            clf.fit(x_train, y_train)
+
+            return clf

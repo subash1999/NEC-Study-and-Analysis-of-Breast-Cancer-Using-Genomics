@@ -1,11 +1,12 @@
 import pandas as pd
 import numpy as np
-from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import GaussianNB,BernoulliNB,MultinomialNB,ComplementNB
+from abc import ABC, abstractmethod
 
 from project3_parent import Project3Parent
 
-class GenomicsNB(Project3Parent) :
-
+class GenomicsNB(Project3Parent,ABC) :
+    """ Abstract Class for the Naives Bayes Method of classification : inherits Project3Parent """
     def __init__(self):
         super().__init__()
 
@@ -27,7 +28,7 @@ class GenomicsNB(Project3Parent) :
         self.model = clf
         
         return clf
-
+    @abstractmethod
     def classification(self,x_train : np.array ,y_train : np.array) -> GaussianNB() :        
         """This returns the GaussianNB Classification Model
         
@@ -82,3 +83,88 @@ class GenomicsNB(Project3Parent) :
         x = x.reshape(len(x),-1)
         y = self.model.predict(x)
         return y
+
+class GenomicsMNB(GenomicsNB) :
+    """
+    Classifies using Multinomial Naives Bayes Classification : inherits GenomicsNB Class
+    """
+    def __init__(self):
+        super().__init__()
+
+    def classification(self,x_train : np.array ,y_train : np.array) -> MultinomialNB() :        
+        """This returns the MultinomialNB Classification Model
+        
+        Arguments:
+            x_train {np.array} -- The train data x
+            y_train {np.array} -- The train data y
+        
+        Returns:
+            MultinomialNB -- It is a KNeighborsClassifier model
+        """
+        clf = MultinomialNB()
+        clf.fit(x_train,y_train)        
+        return clf
+
+class GenomicsBNB(GenomicsNB) :
+    """
+     Classifies using Bernoulli Naives Bayes Classification : inherits GenomicsNB Class
+    """
+    def __init__(self):
+        super().__init__()
+
+    def classification(self,x_train : np.array ,y_train : np.array) -> BernoulliNB() :        
+        """This returns the BernoulliNB Classification Model
+        
+        Arguments:
+            x_train {np.array} -- The train data x
+            y_train {np.array} -- The train data y
+        
+        Returns:
+            BernoulliNB -- It is a KNeighborsClassifier model
+        """
+        clf = BernoulliNB()
+        clf.fit(x_train,y_train)        
+        return clf
+
+
+class GenomicsCNB(GenomicsNB) :
+    """
+     Classifies using Complement Naives Bayes Classification : inherits GenomicsNB Class
+    """
+    def __init__(self):
+        super().__init__()
+
+    def classification(self,x_train : np.array ,y_train : np.array) -> ComplementNB() :        
+        """This returns the ComplementNB Classification Model
+        
+        Arguments:
+            x_train {np.array} -- The train data x
+            y_train {np.array} -- The train data y
+        
+        Returns:
+            ComplementNB -- It is a KNeighborsClassifier model
+        """
+        clf = ComplementNB()
+        clf.fit(x_train,y_train)        
+        return clf
+
+class GenomicsGNB(GenomicsNB) :
+    """
+    Classifies using Gaussian Naives Bayes Classification : inherits GenomicsNB Class
+    """
+    def __init__(self):
+        super().__init__()
+
+    def classification(self,x_train : np.array ,y_train : np.array) -> GaussianNB() :        
+        """This returns the GaussianNB Classification Model
+        
+        Arguments:
+            x_train {np.array} -- The train data x
+            y_train {np.array} -- The train data y
+        
+        Returns:
+            GaussianNB -- It is a KNeighborsClassifier model
+        """
+        clf = GaussianNB()
+        clf.fit(x_train,y_train)        
+        return clf
