@@ -6,7 +6,7 @@ import datetime
 class RecordPeformance():
     
     def __init__(self,run_type = None):
-
+        path = "performance_report/"
         self.clf_fn = "clf_performance.csv" 
         self.top_fn = "top_genes_performance.csv" 
         self.tot_fn = "total_performance.csv"
@@ -16,10 +16,13 @@ class RecordPeformance():
         else : 
             print ("\nError : Run Type Can Only be of type 'test' or None")
             raise ValueError
-        # if run_type.lower() == 'test':
-        #     self.top_fn = '/test/'+self.top_fn 
-        #     self.clf_fn = '/test/'+self.clf_fn
-        #     self.tot_fn = '/test/'+self.tot_fn
+        if run_type.lower() == 'test':
+            self.top_fn = 'test_'+self.top_fn 
+            self.clf_fn = 'test_'+self.clf_fn
+            self.tot_fn = 'test_'+self.tot_fn
+        self.top_fn = path+self.top_fn 
+        self.clf_fn = path+self.clf_fn
+        self.tot_fn = path+self.tot_fn
             
     def top(self,top_gene_method : str,top_k_gene : int):
         self.top_gene_method = top_gene_method
@@ -60,7 +63,14 @@ class RecordPeformance():
         self.top_time_taken = (now - self.top_time)/1000
         print("----Before Top DF----")
         print(self.top_df)
-        self.top_df.append([(self.top_time,self.top_gene_method,self.top_k_gene,self.top_time_taken)])
+        new_val_list = [
+            (
+                str(self.top_time),self.top_gene_method,self.top_k_gene,str(self.top_time_taken)
+            )
+        ]
+        df_val = pd.DataFrame(np.array(new_val_list))
+        df_val.columns = self.top_df.columns
+        self.top_df = self.top_df.append(df_val)
         print("----Top DF----")
         print(self.top_df)
         self.saveCSV(self.top_fn,self.top_df)
@@ -68,16 +78,30 @@ class RecordPeformance():
     def clf_end(self,train_acc : float,test_acc : float):
         now = datetime.datetime.now()
         self.clf_time_taken = (now - self.top_time)/1000
-        self.clf_df.append([(self.clf_time,self.clf_method,self.clf_no_of_gene,self.clf_time_taken
-        ,train_acc,test_acc,(train_acc+test_acc)/2)])
+        new_val_list = [
+            (
+                self.clf_time,self.clf_method,self.clf_no_of_gene,self.clf_time_taken,
+                train_acc,test_acc,(train_acc+test_acc)/2
+            )
+        ]
+        df_val = pd.DataFrame(np.array(new_val_list))
+        df_val.columns = self.clf_df.columns
+        self.clf_df = self.clf_df.append(df_val)
         self.saveCSV(self.clf_fn,self.clf_df)
 
     def tot_end(self,train_acc : float,test_acc : float):
         now = datetime.datetime.now()
         self.tot_time_taken = (now - self.tot_time)/1000
-        self.tot_df.append([(self.tot_time,self.tot_clf_method,
-        self.tot_top_k_gene,self.tot_top_gene_method,
-        self.tot_time_taken,train_acc,test_acc,(train_acc+test_acc)/2)])
+        new_val_list = [
+            (
+                self.tot_time,self.tot_clf_method,
+                self.tot_top_k_gene,self.tot_top_gene_method,
+                self.tot_time_taken,train_acc,test_acc,(train_acc+test_acc)/2
+            )
+        ]
+        df_val = pd.DataFrame(np.array(new_val_list))
+        df_val.columns = self.tot_df.columns
+        self.tot_df = self.tot_df.append(df_val)
         self.saveCSV(self.tot_fn,self.tot_df)        
 
 
@@ -93,7 +117,8 @@ class RecordPeformance():
         return df
         
     def saveCSV(self,file_name,df):
-        df.to_csv(file_name, sep=',',index=False)
+        df = df.set_index('TimeStamp',drop=True)
+        df.to_csv(file_name, sep=',')
 
     def timeToDateTime(self,ts:time,datetime_format : str = '%Y-%m-%d %H:%M:%S') -> datetime:
         """Convert python's "time" to "datetime" String

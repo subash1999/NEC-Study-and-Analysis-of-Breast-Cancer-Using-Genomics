@@ -10,7 +10,7 @@ class GenomicsChiSquare(Project3Parent):
     def __init__(self):
         super().__init__()
         self.chi2_df = None
-        self.method_name = "Chi Square (χ²) Method"
+        self.method_name = "Chi Square (X²) Method"
 
     def selectTopGenes(self,x : np.array,y : np.array, top_k_genes = 100) -> np.array:
         """It select the top genes/features

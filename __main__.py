@@ -11,27 +11,29 @@ import numpy as np
 
 from record_performance import RecordPeformance
 
-record = RecordPeformance("test")
+for x in range(0,11):
+    print("Count : ",x)
+    record = RecordPeformance("test")
 
-chi2 = GenomicsChiSquare()
-svc  = GenomicsSVC()
+    chi2 = GenomicsChiSquare()
+    svc  = GenomicsSVC()
 
-record.tot(svc.clf_name,100,chi2.method_name)
+    record.tot(svc.clf_name,100,chi2.method_name)
 
 
 
-record.top(chi2.method_name,100)
-record.top_start()
-chi2.makeTopGenesDF()
-df_top = chi2.getChi2TopGenesDF()
-record.top_end()
+    record.top(chi2.method_name,100)
+    record.top_start()
+    chi2.makeTopGenesDF()
+    df_top = chi2.getChi2TopGenesDF()
+    record.top_end()
 
-print(df_top)
+    # print(df_top)
 
-record.clf(svc.clf_name,100)
-record.clf_start()
-svc.setDF(df_top)
-svc.trainModel()
-record.clf_end(svc.acc_train,svc.acc_test)
+    record.clf(svc.clf_name,100)
+    record.clf_start()
+    svc.setDF(df_top)
+    svc.trainModel()
+    record.clf_end(svc.acc_train,svc.acc_test)
 
-record.tot_end(svc.acc_train,svc.acc_test)
+    record.tot_end(svc.acc_train,svc.acc_test)
