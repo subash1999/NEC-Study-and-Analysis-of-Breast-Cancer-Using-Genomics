@@ -54,13 +54,13 @@ class RecordPeformance():
     def top_start(self):
         self.top_time = datetime.datetime.now()
     def clf_start(self):
-        self.top_time = datetime.datetime.now()
+        self.clf_time = datetime.datetime.now()
     def tot_start(self):
-        self.top_time = datetime.datetime.now()
+        self.tot_time = datetime.datetime.now()
 
     def top_end(self):
         now = datetime.datetime.now()
-        self.top_time_taken = (now - self.top_time)/1000
+        self.top_time_taken = (now - self.top_time)
         new_val_list = [
             (
                 str(self.top_time),self.top_gene_method,self.top_k_gene,str(self.top_time_taken)
@@ -73,7 +73,7 @@ class RecordPeformance():
 
     def clf_end(self,train_acc : float,test_acc : float):
         now = datetime.datetime.now()
-        self.clf_time_taken = (now - self.top_time)/1000
+        self.clf_time_taken = (now - self.clf_time)
         new_val_list = [
             (
                 self.clf_time,self.clf_method,self.clf_no_of_gene,self.clf_time_taken,
@@ -87,7 +87,7 @@ class RecordPeformance():
 
     def tot_end(self,train_acc : float,test_acc : float):
         now = datetime.datetime.now()
-        self.tot_time_taken = (now - self.tot_time)/1000
+        self.tot_time_taken = (now - self.tot_time)
         new_val_list = [
             (
                 self.tot_time,self.tot_clf_method,

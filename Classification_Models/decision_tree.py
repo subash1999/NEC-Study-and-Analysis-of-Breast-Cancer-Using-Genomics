@@ -31,10 +31,10 @@ class GenomicsDT(Project3Parent,ABC):
         return clf
 
     def accuracyOfModel(self,clf : tree ,x_train : np.array ,y_train : np.array,x_test : np.array ,y_test : np.array) -> dict:
-        acc_train = self.model.score(self.x_train, self.y_train)
-        acc_test = self.model.score (self.x_test, self.y_test)
+        self.acc_train = self.model.score(self.x_train, self.y_train)
+        self.acc_test = self.model.score (self.x_test, self.y_test)
 
-        return {'acc_train':acc_train, 'acc_test' : acc_test}
+        return {'acc_train':self.acc_train, 'acc_test' : self.acc_test}
 
     def predict(self, x : np.array ) -> np.array :
         x = np.array(x)
