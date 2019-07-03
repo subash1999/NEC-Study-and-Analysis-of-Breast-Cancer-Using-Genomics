@@ -9,6 +9,7 @@ class GenomicsKMeans(Project3Parent):
     
     def __init__(self):
         super().__init__()
+        self.clf_name = "KMeans Clustering"
     
     def trainModel(self,test_size_input: int =0.2, no_of_cluster = 2) -> KMeans() :
         """This method trains the model with KMeans classification, before it call makeDF()

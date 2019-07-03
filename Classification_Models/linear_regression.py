@@ -17,6 +17,7 @@ class GenomicsLR(Project3Parent):
     # def init method , i.e. constructor 
     def __init__(self):
         super().__init__()
+        self.method_name = "Linear Regression"
 
     def trainModel(self,test_size_input: int =0.2 ,number_of_jobs: int=-1) -> LinearRegression :
         """This method trains the model with linear regression, before it call makeDF()

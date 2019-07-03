@@ -8,6 +8,7 @@ class GenomicsKNN(Project3Parent):
     
     def __init__(self):
         super().__init__()
+        self.clf_name = "K-Nearest Neighbour"
 
     def trainModel(self,test_size_input: int =0.01) -> neighbors.KNeighborsClassifier() :
         """This method trains the model with KNN classification, before it call makeDF()

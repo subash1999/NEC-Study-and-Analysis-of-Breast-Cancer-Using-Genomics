@@ -8,7 +8,7 @@ class GenomicsSVC(Project3Parent):
     
     def __init__(self):
         super().__init__()
-
+        self.clf_name = "Support Vector Machine Classification"
     def trainModel(self,test_size_input: int =0.2) -> svm.SVC() :
         """This method trains the model with SVC classification, before it call makeDF()
         

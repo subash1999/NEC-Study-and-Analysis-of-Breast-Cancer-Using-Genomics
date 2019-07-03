@@ -9,6 +9,7 @@ class GenomicsNB(Project3Parent,ABC) :
     """ Abstract Class for the Naives Bayes Method of classification : inherits Project3Parent """
     def __init__(self):
         super().__init__()
+        self.clf_name = "Naives Bayes"
 
     def trainModel(self,test_size_input: int =0.01) -> GaussianNB() :
         """This method trains the model with KNN classification, before it call makeDF()
@@ -90,6 +91,7 @@ class GenomicsMNB(GenomicsNB) :
     """
     def __init__(self):
         super().__init__()
+        self.clf_name = "Multinomial Naives Bayes Classification"
 
     def classification(self,x_train : np.array ,y_train : np.array) -> MultinomialNB() :        
         """This returns the MultinomialNB Classification Model
@@ -111,6 +113,7 @@ class GenomicsBNB(GenomicsNB) :
     """
     def __init__(self):
         super().__init__()
+        self.clf_name = "Bernoulli Naives Bayes Classification"
 
     def classification(self,x_train : np.array ,y_train : np.array) -> BernoulliNB() :        
         """This returns the BernoulliNB Classification Model
@@ -133,6 +136,7 @@ class GenomicsCNB(GenomicsNB) :
     """
     def __init__(self):
         super().__init__()
+        self.clf_name = "Complement Naives Bayes Classification"
 
     def classification(self,x_train : np.array ,y_train : np.array) -> ComplementNB() :        
         """This returns the ComplementNB Classification Model
@@ -154,6 +158,7 @@ class GenomicsGNB(GenomicsNB) :
     """
     def __init__(self):
         super().__init__()
+        self.clf_name = "Gaussian Naives Bayes Classification"
 
     def classification(self,x_train : np.array ,y_train : np.array) -> GaussianNB() :        
         """This returns the GaussianNB Classification Model

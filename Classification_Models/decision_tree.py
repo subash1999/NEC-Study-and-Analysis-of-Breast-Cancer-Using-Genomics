@@ -10,6 +10,7 @@ class GenomicsDT(Project3Parent,ABC):
     """Abstract Class For the "Decision Tree Method" : inherits Project3Parent"""
     def __int__(self):
         super().__init__()
+        self.clf_name = "Decision Tree"
 
     def trainModel(self, test_size_input = 0.2 ):
         x_train,x_test,y_train,y_test = self.splitDataToTrainTest(test_size_input) 
@@ -78,6 +79,7 @@ class GenomicsDTC(GenomicsDT):
     """
     def __init__(self):
         super().__init__()
+        self.clf_name = "Decision Tree Classifier"
         
     def classification(self, x_train : np.array , y_train : np.array ) -> tree :
             clf = tree.DecisionTreeClassifier()
@@ -93,6 +95,7 @@ class GenomicsDTR(GenomicsDT):
     """
     def __init__(self):
         super().__init__()
+        self.clf_name = "Decision Tree Regression"
         
     def classification(self, x_train : np.array , y_train : np.array ) -> tree :
             clf = tree.DecisionTreeRegressor()

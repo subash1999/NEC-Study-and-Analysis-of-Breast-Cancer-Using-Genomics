@@ -10,6 +10,7 @@ class GenomicsChiSquare(Project3Parent):
     def __init__(self):
         super().__init__()
         self.chi2_df = None
+        self.method_name = "Chi Square (χ²) Method"
 
     def selectTopGenes(self,x : np.array,y : np.array, top_k_genes = 100) -> np.array:
         """It select the top genes/features
@@ -28,7 +29,7 @@ class GenomicsChiSquare(Project3Parent):
         return x_new
 
     def makeTopGenesDF(self,top_k_genes : int = 100):
-        """select the top genes and make df from it
+        """Select the top genes and make df from it
         
         Keyword Arguments:
             top_k_genes {int} -- number of top features we need (default: {100})
@@ -37,16 +38,16 @@ class GenomicsChiSquare(Project3Parent):
         self.chi2_df =  self.returnDFfromNP(x_new,self.y)
     
     def getChi2TopGenesDF(self)->pd.DataFrame:
-        """Returns the df of chi2 top ranked genes, Use makeTopGenesDF() before this otherwise
-        None is returned
+        """Returns the df of chi2 top ranked genes
+        *** Use makeTopGenesDF() before this otherwise None is returned ***
         
         Returns:
             pd.DataFrame -- dataframe of top ranked genes by chi square method
         """
-        if self.chi2_df == None:
+        if type(self.chi2_df) != None:
+            return self.chi2_df
+        else:
             print("Call makeTopGeneDF() before this function, Now only none is returned")
-
-        return self.chi2_df
 
 
         

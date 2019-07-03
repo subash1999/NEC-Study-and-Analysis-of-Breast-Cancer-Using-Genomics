@@ -2,7 +2,6 @@ import sys, os
 path = os.path.join(os.path.dirname(__file__),'..')
 if path not in sys.path:
     sys.path.append(path)
-print(sys.path)
 
 from support_vector_machine import GenomicsSVC
 from linear_regression import GenomicsLR

@@ -129,10 +129,10 @@ class Project3Parent():
             y {np.array} -- results in the np array            
         """
         df_geo = self.getDF()['GEO_ACC']
-        np_array = np.append(x, y, axis=1)
-        df = pd.DataFrame(np_array)
-        last_col = df.column[-1]
-        df.rename(columns={ last_col : "relapse" })
+        df_x = pd.DataFrame(x)
+        df_y = pd.DataFrame(y[:,None])
+        df_y.columns=["relapse"]
+        df = pd.concat([df_x,df_y],axis=1)
         df = pd.concat([df_geo, df], axis = 1)
         return df
 
