@@ -61,8 +61,6 @@ class RecordPeformance():
     def top_end(self):
         now = datetime.datetime.now()
         self.top_time_taken = (now - self.top_time)/1000
-        print("----Before Top DF----")
-        print(self.top_df)
         new_val_list = [
             (
                 str(self.top_time),self.top_gene_method,self.top_k_gene,str(self.top_time_taken)
@@ -71,8 +69,6 @@ class RecordPeformance():
         df_val = pd.DataFrame(np.array(new_val_list))
         df_val.columns = self.top_df.columns
         self.top_df = self.top_df.append(df_val)
-        print("----Top DF----")
-        print(self.top_df)
         self.saveCSV(self.top_fn,self.top_df)
 
     def clf_end(self,train_acc : float,test_acc : float):
@@ -108,12 +104,13 @@ class RecordPeformance():
     def initializeCSV(self,file_name : str,columns: list) -> pd.DataFrame:
         
         try : 
-            df =  pd.read_csv(filename,sep=',')
-            if df.columns != columns :
+            df =  pd.read_csv(file_name,sep=',')
+            if list(df.columns) != columns :
                 raise Exception
-        except : 
+        except FileNotFoundError as e:
             df = pd.DataFrame(columns=columns)
-
+        except Exception as e:
+            print("!!! Exception Occured !!! \n",e)
         return df
         
     def saveCSV(self,file_name,df):

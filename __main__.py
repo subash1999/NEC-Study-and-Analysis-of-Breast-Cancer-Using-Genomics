@@ -2,16 +2,15 @@ import sys, os
 path = os.path.join(os.path.dirname(__file__))
 if path not in sys.path:
     sys.path.append(path)
-# print(sys.path)
+
+import pandas as pd 
+import numpy as npclear
 
 from Classification_Models.support_vector_machine import GenomicsSVC
 from Top_Ranking_Models.chi_square import GenomicsChiSquare
-import pandas as pd 
-import numpy as np
-
 from record_performance import RecordPeformance
 
-for x in range(0,11):
+for x in range(0,6):
     print("Count : ",x)
     record = RecordPeformance("test")
 
@@ -27,8 +26,6 @@ for x in range(0,11):
     chi2.makeTopGenesDF()
     df_top = chi2.getChi2TopGenesDF()
     record.top_end()
-
-    # print(df_top)
 
     record.clf(svc.clf_name,100)
     record.clf_start()

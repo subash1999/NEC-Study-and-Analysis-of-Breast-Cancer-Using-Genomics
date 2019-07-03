@@ -1,0 +1,1 @@
+record.tot_end(svc.acc_train,svc.acc_test)
