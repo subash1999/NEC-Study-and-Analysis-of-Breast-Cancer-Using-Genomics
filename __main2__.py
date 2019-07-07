@@ -1,3 +1,4 @@
+# Used for the All genes classification
 import sys, os
 path = os.path.join(os.path.dirname(__file__))
 if path not in sys.path:
