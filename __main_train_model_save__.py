@@ -24,7 +24,6 @@ def chi_square_models_save(no_of_genes):
     gnbs = []
     mnbs = []
     dtcs = []
-    dtrs = []
     for x in range(0,no_of_runs):
         print("Count : ",x)
 
@@ -39,8 +38,7 @@ def chi_square_models_save(no_of_genes):
         gnb = GenomicsGNB()
         mnb = GenomicsMNB()
         dtc = GenomicsDTC()
-        dtr = GenomicsDTR()
-
+        
         
 
         record.top(chi2.method_name,no_of_genes)
@@ -113,14 +111,7 @@ def chi_square_models_save(no_of_genes):
         record.clf_end(dtc.acc_train,dtc.acc_test)
         record.tot_end(dtc.acc_train,dtc.acc_test)
 
-        record.tot(dtr.clf_name,no_of_genes,chi2.method_name)
-        record.clf(dtr.clf_name,no_of_genes)
-        record.tot_start()
-        record.clf_start()
-        dtr.setDF(df_top)
-        dtr.trainModel()
-        record.clf_end(dtr.acc_train,dtr.acc_test)
-        record.tot_end(dtr.acc_train,dtr.acc_test)
+        
 
         del(record)
 
@@ -139,8 +130,7 @@ def chi_square_models_save(no_of_genes):
         del(mnb)
         dtcs.append(dtc)
         del(dtc)
-        dtrs.append(dtr)
-        del(dtr)
+       
     
     svc_max = svcs[0]
     knn_max = knns[0]
@@ -149,7 +139,6 @@ def chi_square_models_save(no_of_genes):
     gnb_max = gnbs[0]
     mnb_max = mnbs[0]
     dtc_max = dtcs[0]
-    dtr_max = dtrs[0]
     # for i in range(0,no_of_runs):
     #     if svcs[i].acc_test > svc_max.acc_test:
     #         svc_max = svcs[i].acc_test
@@ -165,8 +154,6 @@ def chi_square_models_save(no_of_genes):
     #         mnb_max = mnbs[i].acc_test
     #     if dtcs[i].acc_test > dtc_max.acc_test:
     #         dtc_max = dtcs[i].acc_test
-    #     if dtrs[i].acc_test > dtr_max.acc_test:
-    #         dtr_max = dtrs[i].acc_test
   
     svc_max.saveModelUsingJoblib(svc_max.model,"trained_models/svc_chi_square_"+str(no_of_genes))
     knn_max.saveModelUsingJoblib(knn_max.model,"trained_models/knn_chi_square_"+str(no_of_genes))
@@ -175,8 +162,7 @@ def chi_square_models_save(no_of_genes):
     gnb_max.saveModelUsingJoblib(gnb_max.model,"trained_models/gnb_chi_square_"+str(no_of_genes))
     mnb_max.saveModelUsingJoblib(mnb_max.model,"trained_models/mnb_chi_square_"+str(no_of_genes))
     dtc_max.saveModelUsingJoblib(dtc_max.model,"trained_models/dtc_chi_square_"+str(no_of_genes))
-    dtr_max.saveModelUsingJoblib(dtr_max.model,"trained_models/dtr_chi_square_"+str(no_of_genes))
-
+   
 def all_genes_models():
     svcs = []
     knns = []
@@ -185,7 +171,6 @@ def all_genes_models():
     gnbs = []
     mnbs = []
     dtcs = []
-    dtrs = []
     for x in range(0,no_of_runs):
         print("Count : ",x)
 
@@ -199,8 +184,7 @@ def all_genes_models():
         gnb = GenomicsGNB()
         mnb = GenomicsMNB()
         dtc = GenomicsDTC()
-        dtr = GenomicsDTR()
-
+        
         
         record.clf(svc.clf_name,svc.getDF().shape[1])
         record.clf_start()
@@ -250,13 +234,7 @@ def all_genes_models():
         dtcs.append(dtc)
         del(dtc)
 
-        record.clf(dtr.clf_name,dtr.getDF().shape[1])
-        record.clf_start()
-        dtr.trainModel()
-        record.clf_end(dtr.acc_train,dtr.acc_test)
-        dtrs.append(dtr)
-        del(dtr)
-
+        
         del(record) 
     
 
@@ -267,7 +245,6 @@ def all_genes_models():
     gnb_max = gnbs[0]
     mnb_max = mnbs[0]
     dtc_max = dtcs[0]
-    dtr_max = dtrs[0]
     # for i in range(0,no_of_runs):
     #     if svcs[i].acc_test > svc_max.acc_test:
     #         svc_max = svcs[i].acc_test
@@ -283,9 +260,7 @@ def all_genes_models():
     #         mnb_max = mnbs[i].acc_test
     #     if dtcs[i].acc_test > dtc_max.acc_test:
     #         dtc_max = dtcs[i].acc_test
-    #     if dtrs[i].acc_test > dtr_max.acc_test:
-    #         dtr_max = dtrs[i].acc_test
-  
+    
     svc_max.saveModelUsingJoblib(svc_max.model,"trained_models/svc_all_genes_22385")
     knn_max.saveModelUsingJoblib(knn_max.model,"trained_models/knn_all_genes_22385")
     bnb_max.saveModelUsingJoblib(bnb_max.model,"trained_models/bnb_all_genes_22385")
@@ -293,12 +268,25 @@ def all_genes_models():
     gnb_max.saveModelUsingJoblib(gnb_max.model,"trained_models/gnb_all_genes_22385")
     mnb_max.saveModelUsingJoblib(mnb_max.model,"trained_models/mnb_all_genes_22385")
     dtc_max.saveModelUsingJoblib(dtc_max.model,"trained_models/dtc_all_genes_22385")
-    dtr_max.saveModelUsingJoblib(dtr_max.model,"trained_models/dtr_all_genes_22385")
-
+    
 import gc
 
 # gc.collect()
-# all_genes_models()
+all_genes_models()
+gc.collect()
+chi_square_models_save(1000)
 
 gc.collect()
 chi_square_models_save(2000)
+
+gc.collect()
+chi_square_models_save(3000)
+
+gc.collect()
+chi_square_models_save(4000)
+
+gc.collect()
+chi_square_models_save(8000)
+
+gc.collect()
+chi_square_models_save(10000)
