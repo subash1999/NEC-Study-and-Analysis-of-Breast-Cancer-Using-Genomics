@@ -1,21 +1,27 @@
 #used for the 100 genes classification
-import sys, os
+import gc
+import os
+import sys
+
+import numpy as np
+import pandas as pd
+
+from Classification_Models.decision_tree import GenomicsDTC, GenomicsDTR
+from Classification_Models.k_nearest_neighbour import GenomicsKNN
+from Classification_Models.naives_bayes import (GenomicsBNB, GenomicsCNB,
+                                                GenomicsGNB, GenomicsMNB)
+from Classification_Models.support_vector_machine import GenomicsSVC
+from record_performance import RecordPeformance
+from Top_Ranking_Models.chi_square import GenomicsChiSquare
+from update_best_model import UpdateBestModel
+
 path = os.path.join(os.path.dirname(__file__))
 if path not in sys.path:
     sys.path.append(path)
 
-import pandas as pd 
-import numpy as np
-# import time
-
-from Classification_Models.decision_tree import GenomicsDTC, GenomicsDTR
-from Classification_Models.k_nearest_neighbour import GenomicsKNN
-from Classification_Models.naives_bayes import GenomicsBNB,GenomicsCNB,GenomicsGNB,GenomicsMNB 
-from Classification_Models.support_vector_machine import GenomicsSVC
-from Top_Ranking_Models.chi_square import GenomicsChiSquare
-from record_performance import RecordPeformance
-
+u = UpdateBestModel()
 no_of_runs=1
+
 def chi_square_models_save(no_of_genes):
     svcs = []
     knns = []
@@ -156,13 +162,20 @@ def chi_square_models_save(no_of_genes):
     #         dtc_max = dtcs[i].acc_test
   
     svc_max.saveModelUsingJoblib(svc_max.model,"trained_models/svc_chi_square_"+str(no_of_genes))
+    u.updateBestModel(svc_max,no_of_genes,chi2)
     knn_max.saveModelUsingJoblib(knn_max.model,"trained_models/knn_chi_square_"+str(no_of_genes))
+    u.updateBestModel(knn_max,no_of_genes,chi2)
     bnb_max.saveModelUsingJoblib(bnb_max.model,"trained_models/bnb_chi_square_"+str(no_of_genes))
+    u.updateBestModel(bnb_max,no_of_genes,chi2)
     cnb_max.saveModelUsingJoblib(cnb_max.model,"trained_models/cnb_chi_square_"+str(no_of_genes))
+    u.updateBestModel(cnb_max,no_of_genes,chi2)
     gnb_max.saveModelUsingJoblib(gnb_max.model,"trained_models/gnb_chi_square_"+str(no_of_genes))
+    u.updateBestModel(gnb_max,no_of_genes,chi2)
     mnb_max.saveModelUsingJoblib(mnb_max.model,"trained_models/mnb_chi_square_"+str(no_of_genes))
+    u.updateBestModel(mnb_max,no_of_genes,chi2)
     dtc_max.saveModelUsingJoblib(dtc_max.model,"trained_models/dtc_chi_square_"+str(no_of_genes))
-   
+    u.updateBestModel(dtc_max,no_of_genes,chi2)
+    
 def all_genes_models():
     svcs = []
     knns = []
@@ -189,6 +202,7 @@ def all_genes_models():
         record.clf(svc.clf_name,svc.getDF().shape[1])
         record.clf_start()
         svc.trainModel()
+        record.clf_end(svc.acc_train,svc.acc_test)
         svcs.append(svc)
         del(svc)
         
@@ -262,31 +276,21 @@ def all_genes_models():
     #         dtc_max = dtcs[i].acc_test
     
     svc_max.saveModelUsingJoblib(svc_max.model,"trained_models/svc_all_genes_22385")
+    u.updateBestModel(svc_max,222385)
     knn_max.saveModelUsingJoblib(knn_max.model,"trained_models/knn_all_genes_22385")
+    u.updateBestModel(knn_max,222385)
     bnb_max.saveModelUsingJoblib(bnb_max.model,"trained_models/bnb_all_genes_22385")
+    u.updateBestModel(bnb_max,222385)
     cnb_max.saveModelUsingJoblib(cnb_max.model,"trained_models/cnb_all_genes_22385")
+    u.updateBestModel(cnb_max,222385)
     gnb_max.saveModelUsingJoblib(gnb_max.model,"trained_models/gnb_all_genes_22385")
+    u.updateBestModel(gnb_max,222385)
     mnb_max.saveModelUsingJoblib(mnb_max.model,"trained_models/mnb_all_genes_22385")
+    u.updateBestModel(mnb_max,222385)
     dtc_max.saveModelUsingJoblib(dtc_max.model,"trained_models/dtc_all_genes_22385")
-    
-import gc
+    u.updateBestModel(dtc_max,222385)
 
 # gc.collect()
 all_genes_models()
 gc.collect()
-chi_square_models_save(1000)
-
-gc.collect()
-chi_square_models_save(2000)
-
-gc.collect()
-chi_square_models_save(3000)
-
-gc.collect()
-chi_square_models_save(4000)
-
-gc.collect()
-chi_square_models_save(8000)
-
-gc.collect()
-chi_square_models_save(10000)
+# chi_square_models_save(1000)

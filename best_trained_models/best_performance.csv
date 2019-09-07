@@ -1,0 +1,43 @@
+Clf_Model,Top_Ranking_Model,No_Of_Genes,Train_Acc,Test_Acc,File_Name,Time
+Support Vector Machine Classification,,222385,1.0,0.6206896551724138,Support Vector Machine Classification.pkl,2019-09-07 16:47:59.311394
+K-Nearest Neighbour,,222385,0.7349823321554771,0.3333333333333333,K-Nearest Neighbour.pkl,2019-09-07 16:47:59.862623
+Bernoulli Naives Bayes Classification,,222385,0.6254416961130742,0.6666666666666666,Bernoulli Naives Bayes Classification.pkl,2019-09-07 16:48:00.444068
+Complement Naives Bayes Classification,,222385,0.7031802120141343,1.0,Complement Naives Bayes Classification.pkl,2019-09-07 16:48:00.740279
+Gaussian Naives Bayes Classification,,222385,0.9540636042402828,0.6666666666666666,Gaussian Naives Bayes Classification.pkl,2019-09-07 16:48:01.047866
+Multinomial Naives Bayes Classification,,222385,0.6961130742049471,0.6666666666666666,Multinomial Naives Bayes Classification.pkl,2019-09-07 16:48:01.484697
+Decision Tree Classifier,,222385,1.0,0.5862068965517241,Decision Tree Classifier.pkl,2019-09-07 16:48:01.873657
+Support Vector Machine Classification,,222385,1.0,0.6206896551724138,Support Vector Machine Classification.pkl,2019-09-07 17:18:37.964129
+K-Nearest Neighbour,,222385,0.7314487632508834,0.3333333333333333,K-Nearest Neighbour.pkl,2019-09-07 17:18:38.367612
+Bernoulli Naives Bayes Classification,,222385,0.6219081272084805,1.0,Bernoulli Naives Bayes Classification.pkl,2019-09-07 17:18:38.722699
+Complement Naives Bayes Classification,,222385,0.6890459363957597,1.0,Complement Naives Bayes Classification.pkl,2019-09-07 17:18:38.991020
+Gaussian Naives Bayes Classification,,222385,0.950530035335689,0.6666666666666666,Gaussian Naives Bayes Classification.pkl,2019-09-07 17:18:39.445616
+Multinomial Naives Bayes Classification,,222385,0.6961130742049471,0.0,Multinomial Naives Bayes Classification.pkl,2019-09-07 17:18:39.866969
+Decision Tree Classifier,,222385,1.0,0.5862068965517241,Decision Tree Classifier.pkl,2019-09-07 17:18:40.340200
+Support Vector Machine Classification,,222385,1.0,0.5172413793103449,Support Vector Machine Classification.pkl,2019-09-07 17:21:37.298859
+K-Nearest Neighbour,,222385,0.7279151943462897,0.6666666666666666,K-Nearest Neighbour.pkl,2019-09-07 17:21:37.697010
+Bernoulli Naives Bayes Classification,,222385,0.6219081272084805,1.0,Bernoulli Naives Bayes Classification.pkl,2019-09-07 17:21:38.026361
+Complement Naives Bayes Classification,,222385,0.7031802120141343,0.3333333333333333,Complement Naives Bayes Classification.pkl,2019-09-07 17:21:38.372474
+Gaussian Naives Bayes Classification,,222385,0.9540636042402828,0.6666666666666666,Gaussian Naives Bayes Classification.pkl,2019-09-07 17:21:38.616821
+Multinomial Naives Bayes Classification,,222385,0.6961130742049471,1.0,Multinomial Naives Bayes Classification.pkl,2019-09-07 17:21:39.027097
+Decision Tree Classifier,,222385,1.0,0.5344827586206896,Decision Tree Classifier.pkl,2019-09-07 17:21:39.348969
+Support Vector Machine Classification,,222385,1.0,0.5517241379310345,Support Vector Machine Classification.pkl,2019-09-07 17:40:56.177064
+K-Nearest Neighbour,,222385,0.7243816254416962,0.6666666666666666,K-Nearest Neighbour.pkl,2019-09-07 17:40:56.597935
+Bernoulli Naives Bayes Classification,,222385,0.6254416961130742,0.6666666666666666,Bernoulli Naives Bayes Classification.pkl,2019-09-07 17:40:56.937996
+Complement Naives Bayes Classification,,222385,0.7031802120141343,0.6666666666666666,Complement Naives Bayes Classification.pkl,2019-09-07 17:40:57.155414
+Gaussian Naives Bayes Classification,,222385,0.9469964664310954,0.3333333333333333,Gaussian Naives Bayes Classification.pkl,2019-09-07 17:40:57.396768
+Multinomial Naives Bayes Classification,,222385,0.6996466431095406,0.3333333333333333,Multinomial Naives Bayes Classification.pkl,2019-09-07 17:40:57.929030
+Decision Tree Classifier,,222385,1.0,0.5,Decision Tree Classifier.pkl,2019-09-07 17:40:58.320347
+Support Vector Machine Classification,,222385,1.0,0.6206896551724138,Support Vector Machine Classification.pkl,2019-09-07 18:09:25.613831
+K-Nearest Neighbour,,222385,0.7173144876325088,1.0,K-Nearest Neighbour.pkl,2019-09-07 18:09:26.169345
+Bernoulli Naives Bayes Classification,,222385,0.6254416961130742,0.6666666666666666,Bernoulli Naives Bayes Classification.pkl,2019-09-07 18:09:26.716882
+Complement Naives Bayes Classification,,222385,0.6996466431095406,1.0,Complement Naives Bayes Classification.pkl,2019-09-07 18:09:27.064985
+Gaussian Naives Bayes Classification,,222385,0.9540636042402828,1.0,Gaussian Naives Bayes Classification.pkl,2019-09-07 18:09:27.345205
+Multinomial Naives Bayes Classification,,222385,0.7067137809187279,0.3333333333333333,Multinomial Naives Bayes Classification.pkl,2019-09-07 18:09:27.742140
+Decision Tree Classifier,,222385,1.0,0.5344827586206896,Decision Tree Classifier.pkl,2019-09-07 18:09:28.105169
+Support Vector Machine Classification,,222385,1.0,0.6551724137931034,Support Vector Machine Classification.pkl,2019-09-07 18:24:29.110076
+K-Nearest Neighbour,,222385,0.7420494699646644,0.3333333333333333,K-Nearest Neighbour.pkl,2019-09-07 18:24:29.442187
+Bernoulli Naives Bayes Classification,,222385,0.6219081272084805,1.0,Bernoulli Naives Bayes Classification.pkl,2019-09-07 18:24:29.845110
+Complement Naives Bayes Classification,,222385,0.696113074204947,0.6666666666666666,Complement Naives Bayes Classification.pkl,2019-09-07 18:24:30.225095
+Gaussian Naives Bayes Classification,,222385,0.950530035335689,0.3333333333333333,Gaussian Naives Bayes Classification.pkl,2019-09-07 18:24:30.654945
+Multinomial Naives Bayes Classification,,222385,0.6925795053003534,0.6666666666666666,Multinomial Naives Bayes Classification.pkl,2019-09-07 18:24:30.970102
+Decision Tree Classifier,,222385,1.0,0.603448275862069,Decision Tree Classifier.pkl,2019-09-07 18:24:31.271296

@@ -63,7 +63,10 @@ class RecordPeformance():
         self.top_time_taken = (now - self.top_time)
         new_val_list = [
             (
-                str(self.top_time),self.top_gene_method,self.top_k_gene,str(self.top_time_taken)
+                str(self.top_time),
+                self.top_gene_method,
+                self.top_k_gene,
+                str(self.top_time_taken.total_seconds()*1000)+" ms"
             )
         ]
         df_val = pd.DataFrame(np.array(new_val_list))
@@ -76,7 +79,8 @@ class RecordPeformance():
         self.clf_time_taken = (now - self.clf_time)
         new_val_list = [
             (
-                self.clf_time,self.clf_method,self.clf_no_of_gene,self.clf_time_taken,
+                self.clf_time,self.clf_method,self.clf_no_of_gene,
+                str(self.clf_time_taken.total_seconds()*1000)+" ms",
                 train_acc,test_acc,(train_acc+test_acc)/2
             )
         ]
@@ -92,7 +96,8 @@ class RecordPeformance():
             (
                 self.tot_time,self.tot_clf_method,
                 self.tot_top_k_gene,self.tot_top_gene_method,
-                self.tot_time_taken,train_acc,test_acc,(train_acc+test_acc)/2
+                str(self.tot_time_taken.total_seconds()*1000)+" ms",
+                train_acc,test_acc,(train_acc+test_acc)/2
             )
         ]
         df_val = pd.DataFrame(np.array(new_val_list))
