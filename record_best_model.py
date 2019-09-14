@@ -47,13 +47,13 @@ class RecordBestModel(Project3Parent):
             no_of_genes,
             clf_model.acc_train,
             clf_model.acc_test,
-            clf_model.clf_name+".pkl",
+            clf_model.clf_name+"_"+top_ranking_model_name+".pkl",
             str(datetime.datetime.now()),
         ], index=self.df.columns ) ]
         self.df = self.df.append(listOfSeries , ignore_index=True)
         
-        self.saveModelUsingJoblib(clf_model,"best_trained_models/"+clf_model.clf_name)
-
+        self.saveModelUsingJoblib(clf_model,"best_trained_models/"+clf_model.clf_name+"_"+top_ranking_model_name)
+        clf_model.getDF().to_csv(self.path+"csv/"+clf_model.clf_name+"_"+top_ranking_model_name+".csv", index=False)
         self.df.to_csv(self.path+self.csv_file_name, index=False)        
     
 

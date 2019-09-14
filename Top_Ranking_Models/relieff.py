@@ -24,20 +24,21 @@ class GenomicsReliefF(Project3Parent):
         Returns:
             np.array -- returns the top features selected among features in x variable given
         """
-        feature_selector = ReliefF(n_neighbors=20, n_features_to_keep=top_k_genes)
+        feature_selector = ReliefF(n_neighbors=20,n_features_to_keep=top_k_genes)
         x_new = feature_selector.fit_transform(x,y)
         # for x in feature_selector.feature_scores:
         #     print(x,end=',')
         print(np.amax(feature_selector.feature_scores))
         return x_new
 
-    def makeTopGenesDF(self,top_k_genes : int = 100):
+    def makeTopGenesDF(self,n_neighbors = 20,top_k_genes : int = 100):
         """Select the top genes and make df from it
         
         Keyword Arguments:
+            n_neighbors {int} -- The numbers of neighbours to consider while applying algorithm (default: {20})
             top_k_genes {int} -- number of top features we need (default: {100})
         """
-        x_new = self.selectTopGenes(self.x,self.y,top_k_genes)
+        x_new = self.selectTopGenes(self.x,self.y,n_neighbors,top_k_genes)
         self.reliefF_df =  self.returnDFfromNP(x_new,self.y)
     
     def getReliefFTopGenesDF(self)->pd.DataFrame:
@@ -51,4 +52,13 @@ class GenomicsReliefF(Project3Parent):
             return self.reliefF_df
         else:
             print("Call makeTopGeneDF() before this function, Now only none is returned")
+            return None
     
+    def getTopGenesDF(self) -> pd.DataFrame:
+        """Returns the df of ReliefF top ranked genes same as getReliefFTopGenesDF
+        *** Use makeTopGenesDF() before this otherwise None is returned ***
+        
+        Returns:
+            pd.DataFrame -- dataframe of top ranked genes by chi square method
+        """
+        return self.getReliefFTopGenesDF()

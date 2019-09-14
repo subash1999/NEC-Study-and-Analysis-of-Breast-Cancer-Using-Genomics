@@ -48,6 +48,14 @@ class GenomicsChiSquare(Project3Parent):
             return self.chi2_df
         else:
             print("Call makeTopGeneDF() before this function, Now only none is returned")
+            return None
 
-
+    def getTopGenesDF(self) -> pd.DataFrame:
+        """Returns the df of chi2 top ranked genes same as getChi2TopGenesDF
+        *** Use makeTopGenesDF() before this otherwise None is returned ***
+        
+        Returns:
+            pd.DataFrame -- dataframe of top ranked genes by chi square method
+        """
+        return self.getChi2TopGenesDF()
         

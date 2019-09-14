@@ -200,17 +200,20 @@ class Project3Parent():
             
         return model
     
-    def getXYOfData(self) -> (np.array,np.array):
+    def getXYOfData(self,df = None) -> (np.array,np.array):
         """It returns the np array of the df in terms of features and result
-       
+       Arguments:
+            df -- df of the data for project {(default: None)}, uses default df of class if None
        Returns:
             tuple -- tuple contains (x,y) of df for this project
         """
-        df = self.getDF().drop(columns= ['GEO_ACC'] )
+        if df is None:
+            df = self.getDF()
+        df = df.drop(columns= ['GEO_ACC'] )
         self.y = np.array(df['relapse'])
         self.x = np.array(df.drop(columns= ['relapse']))
         return (self.x,self.y)
-
+    
     def splitDataToTrainTest(self,test_size_input: float = 0.2) -> (np.array,np.array,np.array,np.array):
         """It splits the data to train and test with the test_size
         

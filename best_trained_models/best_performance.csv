@@ -1,15 +1,22 @@
 Clf_Model,Top_Ranking_Model,No_Of_Genes,Train_Acc,Test_Acc,File_Name,Time
-Support Vector Machine Classification,No Model,222385,1.0,0.4827586206896552,Support Vector Machine Classification.pkl,2019-09-14 11:19:03.619828
-K-Nearest Neighbour,No Model,222385,0.7279151943462897,0.3333333333333333,K-Nearest Neighbour.pkl,2019-09-14 11:22:34.923330
-Bernoulli Naives Bayes Classification,No Model,222385,0.6289752650176679,0.3333333333333333,Bernoulli Naives Bayes Classification.pkl,2019-09-14 11:22:35.264909
-Complement Naives Bayes Classification,No Model,222385,0.6961130742049471,0.6666666666666666,Complement Naives Bayes Classification.pkl,2019-09-14 11:22:35.491310
-Gaussian Naives Bayes Classification,No Model,222385,0.9540636042402828,0.3333333333333333,Gaussian Naives Bayes Classification.pkl,2019-09-14 11:22:35.872780
-Multinomial Naives Bayes Classification,No Model,222385,0.6961130742049471,1.0,Multinomial Naives Bayes Classification.pkl,2019-09-14 11:22:36.553421
-Decision Tree Classifier,No Model,222385,1.0,0.5689655172413793,Decision Tree Classifier.pkl,2019-09-14 11:22:36.835419
-Support Vector Machine Classification,Chi Square (X²) Method,22000,1.0,0.6724137931034483,Support Vector Machine Classification.pkl,2019-09-14 13:12:40.250464
-K-Nearest Neighbour,Chi Square (X²) Method,22000,0.7703180212014135,0.3333333333333333,K-Nearest Neighbour.pkl,2019-09-14 13:12:40.290389
-Bernoulli Naives Bayes Classification,Chi Square (X²) Method,22000,0.6254416961130742,0.6666666666666666,Bernoulli Naives Bayes Classification.pkl,2019-09-14 13:12:40.333274
-Complement Naives Bayes Classification,Chi Square (X²) Method,22000,0.6148409893992933,0.3333333333333333,Complement Naives Bayes Classification.pkl,2019-09-14 13:12:40.377159
-Gaussian Naives Bayes Classification,Chi Square (X²) Method,22000,0.5477031802120141,0.6666666666666666,Gaussian Naives Bayes Classification.pkl,2019-09-14 13:12:40.419045
-Multinomial Naives Bayes Classification,Chi Square (X²) Method,22000,0.6148409893992933,0.6666666666666666,Multinomial Naives Bayes Classification.pkl,2019-09-14 13:12:40.457940
-Decision Tree Classifier,Chi Square (X²) Method,22000,1.0,0.6551724137931034,Decision Tree Classifier.pkl,2019-09-14 13:12:40.498836
+Support Vector Machine Classification,No Model,22283,1.0,0.603448275862069,Support Vector Machine Classification_No Model.pkl,2019-09-15 01:17:32.205261
+K-Nearest Neighbour,No Model,22283,0.7243816254416962,0.6666666666666666,K-Nearest Neighbour_No Model.pkl,2019-09-15 01:22:10.113619
+Bernoulli Naives Bayes Classification,No Model,22283,0.6219081272084805,1.0,Bernoulli Naives Bayes Classification_No Model.pkl,2019-09-15 01:22:19.745527
+Complement Naives Bayes Classification,No Model,22283,0.6996466431095406,0.6666666666666666,Complement Naives Bayes Classification_No Model.pkl,2019-09-15 01:22:28.585361
+Gaussian Naives Bayes Classification,No Model,22283,0.9575971731448764,0.3333333333333333,Gaussian Naives Bayes Classification_No Model.pkl,2019-09-15 01:22:40.130720
+Multinomial Naives Bayes Classification,No Model,22283,0.6819787985865724,1.0,Multinomial Naives Bayes Classification_No Model.pkl,2019-09-15 01:22:49.091034
+Decision Tree Classifier,No Model,22283,1.0,0.5517241379310345,Decision Tree Classifier_No Model.pkl,2019-09-15 01:22:59.556870
+Support Vector Machine Classification,Chi Square (X²) Method,1000,1.0,0.7068965517241379,Support Vector Machine Classification_Chi Square (X²) Method.pkl,2019-09-15 01:25:43.597157
+K-Nearest Neighbour,Chi Square (X²) Method,1000,0.7597173144876325,0.6666666666666666,K-Nearest Neighbour_Chi Square (X²) Method.pkl,2019-09-15 01:26:50.847115
+Bernoulli Naives Bayes Classification,Chi Square (X²) Method,1000,0.6254416961130742,0.6666666666666666,Bernoulli Naives Bayes Classification_Chi Square (X²) Method.pkl,2019-09-15 01:26:51.287104
+Complement Naives Bayes Classification,Chi Square (X²) Method,1000,0.6784452296819788,0.3333333333333333,Complement Naives Bayes Classification_Chi Square (X²) Method.pkl,2019-09-15 01:26:51.721759
+Gaussian Naives Bayes Classification,Chi Square (X²) Method,1000,0.823321554770318,0.0,Gaussian Naives Bayes Classification_Chi Square (X²) Method.pkl,2019-09-15 01:26:52.175619
+Multinomial Naives Bayes Classification,Chi Square (X²) Method,1000,0.6713780918727915,0.6666666666666666,Multinomial Naives Bayes Classification_Chi Square (X²) Method.pkl,2019-09-15 01:26:52.648376
+Decision Tree Classifier,Chi Square (X²) Method,1000,1.0,0.5517241379310345,Decision Tree Classifier_Chi Square (X²) Method.pkl,2019-09-15 01:26:53.156017
+Support Vector Machine Classification,ReliefF Method,1000,1.0,0.6551724137931034,Support Vector Machine Classification_ReliefF Method.pkl,2019-09-15 01:39:14.361386
+K-Nearest Neighbour,ReliefF Method,1000,0.7314487632508834,0.6666666666666666,K-Nearest Neighbour_ReliefF Method.pkl,2019-09-15 01:55:20.908523
+Bernoulli Naives Bayes Classification,ReliefF Method,1000,0.6254416961130742,0.6666666666666666,Bernoulli Naives Bayes Classification_ReliefF Method.pkl,2019-09-15 01:55:21.269627
+Complement Naives Bayes Classification,ReliefF Method,1000,0.7985865724381626,1.0,Complement Naives Bayes Classification_ReliefF Method.pkl,2019-09-15 01:55:21.616698
+Gaussian Naives Bayes Classification,ReliefF Method,1000,0.9045936395759717,0.6666666666666666,Gaussian Naives Bayes Classification_ReliefF Method.pkl,2019-09-15 01:55:21.943740
+Multinomial Naives Bayes Classification,ReliefF Method,1000,0.8056537102473498,0.6666666666666666,Multinomial Naives Bayes Classification_ReliefF Method.pkl,2019-09-15 01:55:22.262108
+Decision Tree Classifier,ReliefF Method,1000,1.0,0.5172413793103449,Decision Tree Classifier_ReliefF Method.pkl,2019-09-15 01:55:22.617161

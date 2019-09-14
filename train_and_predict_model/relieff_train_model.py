@@ -1,0 +1,189 @@
+#used for the 100 genes classification
+import gc
+import os
+import sys
+
+import numpy as np
+import pandas as pd
+
+from Classification_Models.decision_tree import GenomicsDTC, GenomicsDTR
+from Classification_Models.k_nearest_neighbour import GenomicsKNN
+from Classification_Models.naives_bayes import (GenomicsBNB, GenomicsCNB,
+                                                GenomicsGNB, GenomicsMNB)
+from Classification_Models.support_vector_machine import GenomicsSVC
+from record_performance import RecordPeformance
+from Top_Ranking_Models.relieff import GenomicsReliefF
+from update_best_model import UpdateBestModel
+
+
+path = os.path.join(os.path.dirname(__file__))
+if path not in sys.path:
+    sys.path.append(path)
+
+class ReliefFTrainModel():
+
+    def __init__(self,n_neighbors,no_of_genes):
+        self.n_neighbors  = n_neighbors
+        self.no_of_genes = no_of_genes
+        self.no_of_runs = 1
+
+    def trainAndSaveModels(self):
+        no_of_genes = self.no_of_genes
+        n_neighbors = self.n_neighbors
+        u = UpdateBestModel()
+
+        svcs = []
+        knns = []
+        bnbs = []
+        cnbs = []
+        gnbs = []
+        mnbs = []
+        dtcs = []
+        
+        reliefF = GenomicsReliefF()
+
+        for x in range(0,self.no_of_runs):
+            print("Count : ",x)
+
+            record = RecordPeformance("test")
+
+
+            svc  = GenomicsSVC()
+            knn = GenomicsKNN()
+            bnb = GenomicsBNB()
+            cnb = GenomicsCNB()
+            gnb = GenomicsGNB()
+            mnb = GenomicsMNB()
+            dtc = GenomicsDTC()
+            
+            
+
+            record.top(reliefF.method_name,no_of_genes)
+            record.top_start()
+            reliefF.makeTopGenesDF(n_neighbors,no_of_genes)
+            df_top = reliefF.getReliefFTopGenesDF()
+            record.top_end()
+
+            record.tot(svc.clf_name,no_of_genes,reliefF.method_name)
+            record.clf(svc.clf_name,no_of_genes)
+            record.tot_start()
+            record.clf_start()
+            svc.setDF(df_top)
+            svc.trainModel()
+            
+            record.clf_end(svc.acc_train,svc.acc_test)
+            record.tot_end(svc.acc_train,svc.acc_test)
+
+            record.tot(knn.clf_name,no_of_genes,reliefF.method_name)
+            record.clf(knn.clf_name,no_of_genes)
+            record.tot_start()
+            record.clf_start()
+            knn.setDF(df_top)
+            knn.trainModel()
+            record.clf_end(knn.acc_train,knn.acc_test)
+            record.tot_end(knn.acc_train,knn.acc_test)
+
+            record.tot(bnb.clf_name,no_of_genes,reliefF.method_name)
+            record.clf(bnb.clf_name,no_of_genes)
+            record.tot_start()
+            record.clf_start()
+            bnb.setDF(df_top)
+            bnb.trainModel()
+            record.clf_end(bnb.acc_train,bnb.acc_test)
+            record.tot_end(bnb.acc_train,bnb.acc_test)
+
+            record.tot(cnb.clf_name,no_of_genes,reliefF.method_name)
+            record.clf(cnb.clf_name,no_of_genes)
+            record.tot_start()
+            record.clf_start()
+            cnb.setDF(df_top)
+            cnb.trainModel()
+            record.clf_end(cnb.acc_train,cnb.acc_test)
+            record.tot_end(cnb.acc_train,cnb.acc_test)
+
+            record.tot(gnb.clf_name,no_of_genes,reliefF.method_name)
+            record.clf(gnb.clf_name,no_of_genes)
+            record.tot_start()
+            record.clf_start()
+            gnb.setDF(df_top)
+            gnb.trainModel()
+            record.clf_end(gnb.acc_train,gnb.acc_test)
+            record.tot_end(gnb.acc_train,gnb.acc_test)
+
+            record.tot(mnb.clf_name,no_of_genes,reliefF.method_name)
+            record.clf(mnb.clf_name,no_of_genes)
+            record.tot_start()
+            record.clf_start()
+            mnb.setDF(df_top)
+            mnb.trainModel()
+            record.clf_end(mnb.acc_train,mnb.acc_test)
+            record.tot_end(mnb.acc_train,mnb.acc_test)
+
+            record.tot(dtc.clf_name,no_of_genes,reliefF.method_name)
+            record.clf(dtc.clf_name,no_of_genes)
+            record.tot_start()
+            record.clf_start()
+            dtc.setDF(df_top)
+            dtc.trainModel()
+            record.clf_end(dtc.acc_train,dtc.acc_test)
+            record.tot_end(dtc.acc_train,dtc.acc_test)
+
+            
+
+            del(record)
+
+            svcs.append(svc)
+            del(svc)
+            knns.append(knn)
+            del(knn)
+            bnbs.append(bnb)
+            del(bnb)
+            cnbs.append(cnb)
+            del(cnb)
+            gnbs.append(gnb)
+            del(gnb)
+            mnbs.append(mnb)
+            del(mnb)
+            dtcs.append(dtc)
+            del(dtc)
+        
+        
+        svc_max = svcs[0]
+        knn_max = knns[0]
+        bnb_max = bnbs[0]
+        cnb_max = cnbs[0]
+        gnb_max = gnbs[0]
+        mnb_max = mnbs[0]
+        dtc_max = dtcs[0]
+        # for i in range(0,no_of_runs):
+        #     if svcs[i].acc_test > svc_max.acc_test:
+        #         svc_max = svcs[i].acc_test
+        #     if knns[i].acc_test > knn_max.acc_test:
+        #         knn_max = knns[i].acc_test
+        #     if bnbs[i].acc_test > bnb_max.acc_test:
+        #         bnb_max = bnbs[i].acc_test
+        #     if cnbs[i].acc_test > cnb_max.acc_test:
+        #         cnb_max = cnbs[i].acc_test
+        #     if gnbs[i].acc_test > gnb_max.acc_test:
+        #         gnb_max = gnbs[i].acc_test
+        #     if mnbs[i].acc_test > mnb_max.acc_test:
+        #         mnb_max = mnbs[i].acc_test
+        #     if dtcs[i].acc_test > dtc_max.acc_test:
+        #         dtc_max = dtcs[i].acc_test
+    
+        svc_max.saveModelUsingJoblib(svc_max.model,"trained_models/svc_chi_square_"+str(no_of_genes))
+        u.updateBestModel(svc_max,no_of_genes,reliefF)
+        knn_max.saveModelUsingJoblib(knn_max.model,"trained_models/knn_chi_square_"+str(no_of_genes))
+        u.updateBestModel(knn_max,no_of_genes,reliefF)
+        bnb_max.saveModelUsingJoblib(bnb_max.model,"trained_models/bnb_chi_square_"+str(no_of_genes))
+        u.updateBestModel(bnb_max,no_of_genes,reliefF)
+        cnb_max.saveModelUsingJoblib(cnb_max.model,"trained_models/cnb_chi_square_"+str(no_of_genes))
+        u.updateBestModel(cnb_max,no_of_genes,reliefF)
+        gnb_max.saveModelUsingJoblib(gnb_max.model,"trained_models/gnb_chi_square_"+str(no_of_genes))
+        u.updateBestModel(gnb_max,no_of_genes,reliefF)
+        mnb_max.saveModelUsingJoblib(mnb_max.model,"trained_models/mnb_chi_square_"+str(no_of_genes))
+        u.updateBestModel(mnb_max,no_of_genes,reliefF)
+        dtc_max.saveModelUsingJoblib(dtc_max.model,"trained_models/dtc_chi_square_"+str(no_of_genes))
+        u.updateBestModel(dtc_max,no_of_genes,reliefF)
+
+

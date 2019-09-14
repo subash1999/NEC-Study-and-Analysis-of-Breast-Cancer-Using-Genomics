@@ -1,3 +1,4 @@
+#used for the 100 genes classification
 import gc
 import os
 import sys
@@ -14,55 +15,51 @@ from record_performance import RecordPeformance
 from Top_Ranking_Models.chi_square import GenomicsChiSquare
 from update_best_model import UpdateBestModel
 
+
 path = os.path.join(os.path.dirname(__file__))
 if path not in sys.path:
     sys.path.append(path)
 
-class TrainModel():
-    
-    def __init__(self,top_ranking_method,number_of_genes = None):
-        self.initializeVariables(top_ranking_method,number_of_genes)
+class Chi2TrainModel():
 
-    def initializeVariables(self,top_ranking_method,no_of_genes_to_filter):
-        self.update_best_model_obj = UpdateBestModel()
-        self.record = RecordPeformance("test")
-        self.no_of_runs= 1
-        self.top_ranking_method = top_ranking_method
-        self.no_of_genes_to_filter = no_of_genes_to_filter
+    def __init__(self,no_of_genes):
+        self.no_of_genes = no_of_genes
+        self.no_of_runs = 1
+
+    def trainAndSaveModels(self):
+        no_of_genes = self.no_of_genes
+        u = UpdateBestModel()
+
+        svcs = []
+        knns = []
+        bnbs = []
+        cnbs = []
+        gnbs = []
+        mnbs = []
+        dtcs = []
         
-        self.svcs = []
-        self.knns = []
-        self.bnbs = []
-        self.cnbs = []
-        self.gnbs = []
-        self.mnbs = []
-        self.dtcs = []
+        chi2 = GenomicsChiSquare()
 
-        self.svc = GenomicsSVC()
-        self.knn = GenomicsKNN()
-        self.bnb = GenomicsBNB()
-        self.cnb = GenomicsCNB()
-        self.gnb = GenomicsGNB()
-        self.mnb = GenomicsMNB()
-        self.dtc = GenomicsDTC()
-
-    def getTopDf(self):
-        self.record.top(top_ranking_method.method_name,no_of_genes)
-        self.record.top_start()
-        top_ranking_method.makeTopGenesDF()
-        df_top = top_ranking_method.getChi2TopGenesDF()
-        self.record.top_end()
-        return df_top
-
-    def trainAndSaveModel(self):
         for x in range(0,self.no_of_runs):
             print("Count : ",x)
+
             record = RecordPeformance("test")
 
-            record.top(self.top_gene_method.method_name,no_of_genes)
+
+            svc  = GenomicsSVC()
+            knn = GenomicsKNN()
+            bnb = GenomicsBNB()
+            cnb = GenomicsCNB()
+            gnb = GenomicsGNB()
+            mnb = GenomicsMNB()
+            dtc = GenomicsDTC()
+            
+            
+
+            record.top(chi2.method_name,no_of_genes)
             record.top_start()
-            self.top_gene_method.makeTopGenesDF(no_of_genes)
-            df_top = self.top_gene_method.getChi2TopGenesDF()
+            chi2.makeTopGenesDF(no_of_genes)
+            df_top = chi2.getChi2TopGenesDF()
             record.top_end()
 
             record.tot(svc.clf_name,no_of_genes,chi2.method_name)
@@ -186,3 +183,5 @@ class TrainModel():
         u.updateBestModel(mnb_max,no_of_genes,chi2)
         dtc_max.saveModelUsingJoblib(dtc_max.model,"trained_models/dtc_chi_square_"+str(no_of_genes))
         u.updateBestModel(dtc_max,no_of_genes,chi2)
+
+

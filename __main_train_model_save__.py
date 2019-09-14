@@ -291,9 +291,11 @@ def all_genes_models():
     dtc_max.saveModelUsingJoblib(dtc_max.model,"trained_models/dtc_all_genes_22385")
     u.updateBestModel(dtc_max,222385)
 
-# gc.collect()
-# all_genes_models()
 gc.collect()
-for x in range(1000,22385,1000):
-    chi_square_models_save(x)
-    gc.collect()
+all_genes_models()
+# gc.collect()
+# chi_square_models_save(2000)
+gc.collect()
+# for x in range(1000,22385,1000):
+#     chi_square_models_save(x)
+#     gc.collect()
