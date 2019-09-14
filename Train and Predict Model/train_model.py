@@ -51,7 +51,7 @@ def chi_square_models_save(no_of_genes):
 
         record.top(chi2.method_name,no_of_genes)
         record.top_start()
-        chi2.makeTopGenesDF()
+        chi2.makeTopGenesDF(no_of_genes)
         df_top = chi2.getChi2TopGenesDF()
         record.top_end()
 
@@ -294,6 +294,6 @@ def all_genes_models():
 # gc.collect()
 # all_genes_models()
 gc.collect()
-for x in range(1000,22385,1000):
+for x in range(100,22385,100):
     chi_square_models_save(x)
     gc.collect()

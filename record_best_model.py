@@ -31,7 +31,7 @@ class RecordBestModel(Project3Parent):
                 no_of_genes {init} : number of genes filtered using top_ranking_model for better
                                         feature selection
         """
-        top_ranking_model_name = ""
+        top_ranking_model_name = "No Model"
         if (top_ranking_model != None):
             top_ranking_model_name = top_ranking_model.method_name
 
@@ -71,7 +71,6 @@ class RecordBestModel(Project3Parent):
 
         try:
             df = pd.read_csv(self.path+self.csv_file_name,sep=",")
-            a = df.columns.tolist()
             if (df.columns.tolist() != self.df_columns):
                 raise ValueError("Columns of CSV doesnot match with required columns")
         except FileNotFoundError:
@@ -89,4 +88,4 @@ class RecordBestModel(Project3Parent):
         return df
 
     def setDFToCSVFile(self,df):
-        df.to_csv(self.path+self.csv_file_name, sep=',')
+        df.to_csv(self.path+self.csv_file_name, sep=',', index=False)
