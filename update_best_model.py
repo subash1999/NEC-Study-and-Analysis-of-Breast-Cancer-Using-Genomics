@@ -15,11 +15,11 @@ class UpdateBestModel(Project3Parent):
     def __init__(self):
         self.rec_per = RecordBestModel()
         self.df_existing = self.rec_per.getDFFromCSVFile()
-        self.min_test_acc = 0.5
-        self.min_train_acc = 0.5
+        self.min_test_acc = 0.6
+        self.min_train_acc = 0.7
         self.max_test_acc = 1
         self.max_train_acc = 1
-        self.acceptable_acc_gap = 0.3
+        self.acceptable_acc_gap = 0.2
         self.is_best_model = False
 
     def updateBestModel(self,clf_model,no_of_genes,top_ranking_model=None):
