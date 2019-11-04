@@ -10,31 +10,31 @@ path = os.path.join(os.path.dirname(__file__))
 if path not in sys.path:
     sys.path.append(path)
 
-for x in range(1,15,1):
-    print("***********"*20)
-    print("All Genes no of run : ",x)
-    print("---------------------"*10)
+# for x in range(1,15,1):
+#     print("***********"*20)
+#     print("All Genes no of run : ",x)
+#     print("---------------------"*10)
 
-    a = AllGenesTrainModel()
-    a.trainAndSaveModels()
-    del(a)
-    gc.collect()
+#     a = AllGenesTrainModel()
+#     a.trainAndSaveModels()
+#     del(a)
+#     gc.collect()
 
-for x in range(1000,20000,1000):
+for x in range(1000,2000,1000):
     print("***********"*20)
     print("Chi2 Gene, no of gene : ",x)
     print("---------------------"*10)    
-    t = Chi2TrainModel(1000)
+    t = Chi2TrainModel(x)
     t.trainAndSaveModels()
     del(t)
     gc.collect()
 
-for x in range(1000,21000,2000):
-    for y in range(10,50,10):
-        print("***********"*20)
-        print("ReliefF Gene, no of gene : ",x," AND neighbors : ",y)
-        print("---------------------"*10)   
-        t = ReliefFTrainModel(20,1000)
-        t.trainAndSaveModels()
-        del(t)
-        gc.collect()
+# for x in range(1000,21000,2000):
+#     for y in range(20,30,10):
+#         print("***********"*20)
+#         print("ReliefF Gene, no of gene : ",x," AND neighbors : ",y)
+#         print("---------------------"*10)   
+#         t = ReliefFTrainModel(x,y)
+#         t.trainAndSaveModels()
+#         del(t)
+#         gc.collect()

@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from sklearn import neighbors
+from sklearn.metrics import precision_score
+from sklearn.metrics import confusion_matrix
 
 from project3_parent import Project3Parent
 
@@ -21,11 +23,24 @@ class GenomicsKNN(Project3Parent):
         """
         x_train,x_test,y_train,y_test = self.splitDataToTrainTest(test_size_input) 
         clf = self.classification(x_train,y_train)
+        self.model = clf
+        
         accuracy_dict = self.accuracyOfModel(clf,x_train,y_train,x_test,y_test)
+        self.prec_train = precision_score(self.y_train,self.predict(x_train))
+        self.prec_test = precision_score(self.y_test,self.predict(x_test))
+
+        print("----"*3,self.clf_name,"----"*3)
         print("Accuracy Train : ",accuracy_dict['acc_train'])
         print("Accuracy Test : ",accuracy_dict['acc_test'])
+        print("Precision Train : ",self.prec_train)
+        print("Precision Test : ",self.prec_test)
 
-        self.model = clf
+        self.conf_test = confusion_matrix(self.y_test,self.predict(x_test))
+        self.conf_train = confusion_matrix(self.y_train,self.predict(x_train))
+        print("Confusion Train(tp,tn,fp,fn): ",self.conf_train)
+        print("Confusion Test(tp,tn,fp,fn) : ",self.conf_test)
+
+        
         
         return clf
 

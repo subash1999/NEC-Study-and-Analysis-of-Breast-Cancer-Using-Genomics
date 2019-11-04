@@ -1,0 +1,16 @@
+1. Accuracy
+The most commonly used metric to judge a model and is actually not a clear indicator of the performance.
+The worse happens when classes are imbalanced.
+2.Precision
+Percentage of positive instances out of the total predicted positive instances.
+Here denominator is the model prediction done as positive from the whole given dataset.
+Take it as to find out ‘how much the model is right when it says it is right’.
+3.Recall/Sensitivity/True Positive Rate
+Percentage of positive instances out of the total actual positive instances. 
+Therefore denominator (TP + FN) here is the actual number of positive instances present in the dataset.
+Take it as to find out ‘how much extra right ones, the model missed when it showed the right ones’.
+
+Specificity
+Percentage of negative instances out of the total actual negative instances. 
+Therefore denominator (TN + FP) here is the actual number of negative instances present in the dataset.
+ It is similar to recall but the shift is on the negative instances. 
