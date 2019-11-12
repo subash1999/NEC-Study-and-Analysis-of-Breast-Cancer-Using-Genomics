@@ -47,6 +47,7 @@ class Project3Parent():
 
     def __init__(self,csv_path = 'F:\\BEComp Projects\\Project 3\\Code\\Study-and-Analysis-of-Breast-Cancer-Using-Genomics\\Data\\supervised_learning\\output_dataset\\gse_2034_processed_data.csv'):
         self.current_path = os.getcwd()
+        csv_path= "Data/supervised_learning/output_dataset/gse_2034_processed_data.csv"
         self.csv_path = csv_path
         self.df = None
         # making dataframe
