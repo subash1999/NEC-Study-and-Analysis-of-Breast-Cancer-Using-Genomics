@@ -5,7 +5,69 @@
 
 <div class="center-block text-center">
 <h1>WELCOME</h1>
+<style>
+hr { display: block; height: 12px;
+    border: 3; border-top: 4px solid #ccc;
+    margin: 1em 0; padding: 0; }
+</style>
+<hr><hr>
+<h2>STUDY AND ANALYSIS OF BREAST CANCER USING GENOMICS</h2>
+<hr><hr>
 <a href="{% url 'predict:index' %}" class="btn btn-block btn-success mt-5">GO To Trained Models</a>
+
+</section>
+<section class="m-5">
+<div class="center-block text-center">
+<h1 class="m-5 text-white bg-primary">Best Models Among the Models Trained</h1>
+
+	<style>
+	.my-custom-scrollbar {
+		position: relative;
+		height: 70%;
+		overflow: auto;
+		
+	}
+	.table-wrapper-scroll-y {
+		display: block;
+		width : 100%;
+	}
+	</style>
+	<div class=" table-wrapper-scroll-y">
+	<table class="my-custom-scrollbar table table-bordered table-hover table-responsive table-dark">
+		<thead>
+			<th>S.N</th>
+			{% for x in best_model_columns %}
+			<th>{{ x }}</th>			
+			{% endfor %}
+			<th>Predict Using</th>
+		</thead>
+		<tbody>
+			{% for index,row in best_model_rows %}
+            {% if index == 4 or index == 8 or index == 11  %}
+			<tr>
+				<td>{{ index }}</td>
+			{% for x in row %}
+				<td>{{ x }}</td>
+			{% endfor %}
+				<td><a href="{% url 'predict:selected_model' index 0 %}" class="btn btn-info" >Select Model</a></td>
+			<tr>
+            {% endif %}
+			{% endfor %}
+		</tbody>
+		
+	</table>
+	</div>
+	
+
+<hr>
+<div class="text-white bg-info">
+<h3 class="bg-info"><b>Project Members</b></h3>
+<h4>Sadikshya Shrestha : 015-372</h4>
+<h4>Sujana Thapa Magar : 015-340</h4>
+<h4>Subash Niroula : 015-339</h4>
+<h3><b>Project Supervisor : Asst. Prof Krishna Bikram Shah</b></h3>
+</div>
+</div>
 </div>
 </section>
 {% endblock content %}

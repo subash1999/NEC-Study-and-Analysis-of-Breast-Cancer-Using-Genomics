@@ -9,12 +9,16 @@
     <h3> You have Selected Row Index : {{ row_index }}</h3>
     </div>
     <div class="card-body">
-    <p>Index : {{ index }}</p>
-    <p>Classification Model Name : {{ row.Clf_Model }}</p>
-    <p>Top Ranking Method : {{ row.Top_Ranking_Model }}</p>
-    <p>Number of Genes Selected : {{ row.No_Of_Genes }}</p>
-    <p>Train Accuracy : {{ row.Train_Acc }}</p>
-    <p>Test Accuracy : {{ row.Test_Acc }}</p>
+    <p>Model Index : <b>{{ index }}</b></p>
+    <p>Classification Model Name :  <b>{{ row.Clf_Model }} </b></p>
+    <p>Top Ranking Method :  <b>{{ row.Top_Ranking_Model }} </b></p>
+    <p>Number of Genes Selected :  <b>{{ row.No_Of_Genes }} </b></p>
+    <p>Train Accuracy :  <b>{{ row.Train_Acc }} </b></p>
+    <p>Test Accuracy :  <b>{{ row.Test_Acc }} </b></p>
+    <p>Train Precision :  <b>{{ row.Train_Prec }}  </b></p>
+    <p>Test Precision :  <b>{{ row.Test_Prec }}  </b></p>
+    <p>Train Confusion Matrix :  <b>{{ row.Train_Conf }}  </b></p>
+    <p>Test Confusion Matrix :  <b>{{ row.Test_Conf }}  </b></p>
     </div>
     </div>
 	
@@ -24,17 +28,48 @@
     <small>On Change the page will refresh and give the prediction for the selected index</small>
     <select class="form-group form-control" id="row_index" name="row_index">
     {% for i in prediction_options %}
-        {% if row_index == i %}
-        <option value="{{ i }}" selected>{{ i }}</option>
+        {% if row_index == i.0 %}
+        <option value="{{ i.0 }}" selected>{{ i.0 }} : {{ i.1 }}</option>
         {% else %}
-        <option value="{{ i }}">{{ i }}</option>
+        <option value="{{ i.0 }}">{{ i.0 }} : {{ i.1 }}</option>
         {% endif %}
     {% endfor %}
     </select>
     <h3><u>Result </u></h3>
     <h4>Predicted Output : {{ predicted_result }}</h4>
-    <h4>Actual Output : {{ predicted_result }}</h4>
-	
+    <h4>Actual Output : {{ actual_result }}</h4>
+  <hr>
+  <hr>
+  <h2><u><b>Data Given as Input</b></u></h2>
+  <h4>GEO ACC : {{ geo_acc }}</h4>
+  <style>
+	.my-custom-scrollbar {
+		position: relative;
+		height: 200px;
+		overflow: auto;
+	}
+	.table-wrapper-scroll-y {
+		display: block;
+		width : 100%;
+	}
+	</style>
+  <div class="my-custom-scrollbar table-wrapper-scroll-y mb-5">
+  <table class="table table-active" >
+    <thead>
+      <th> Value's Rank According to it's Weight on Decision Making</th>
+      <th>Input Value</th>
+    </thead>
+    
+    {% comment %} {{ input_given }} {% endcomment %}
+    {% for val in input_given%}
+    <tr>
+      <td>{{ val.0 }} </td>
+      <td> {{ val.1 }} </td>
+    </tr>
+    {% endfor %}
+    
+  </table>
+  </div>
 </section>
 <!-- Modal -->
 <div class="modal fade" id="waiting_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

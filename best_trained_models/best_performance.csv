@@ -1,8 +1,22 @@
-Clf_Model,Top_Ranking_Model,No_Of_Genes,Train_Acc,Test_Acc,File_Name,Time
-Support Vector Machine Classification,No Model,22283,1.0,0.603448275862069,Support Vector Machine Classification_No Model.pkl,2019-11-13 09:49:31.838454
-K-Nearest Neighbour,No Model,22283,0.7243816254416962,0.6666666666666666,K-Nearest Neighbour_No Model.pkl,2019-11-13 09:49:50.105902
-Bernoulli Naives Bayes Classification,No Model,22283,0.6325088339222615,0.0,Bernoulli Naives Bayes Classification_No Model.pkl,2019-11-13 09:50:08.629211
-Complement Naives Bayes Classification,No Model,22283,0.696113074204947,0.3333333333333333,Complement Naives Bayes Classification_No Model.pkl,2019-11-13 09:50:27.791541
-Gaussian Naives Bayes Classification,No Model,22283,0.9540636042402827,1.0,Gaussian Naives Bayes Classification_No Model.pkl,2019-11-13 09:50:41.480460
-Multinomial Naives Bayes Classification,No Model,22283,0.6996466431095406,0.6666666666666666,Multinomial Naives Bayes Classification_No Model.pkl,2019-11-13 09:50:56.215588
-Decision Tree Classifier,No Model,22283,1.0,0.5517241379310345,Decision Tree Classifier_No Model.pkl,2019-11-13 09:51:13.202915
+Clf_Model,Top_Ranking_Model,No_Of_Genes,Train_Acc,Test_Acc,Train_Prec,Test_Prec,Train_Conf,Test_Conf,File_Name,Time
+Support Vector Machine Classification,No Model,22283,0.76,0.7,0.85,0.48,[ [110 50][20 30] ],[ [30 20][19 22]],Support Vector Machine Classification_No Model.pkl,54:43.5
+K-Nearest Neighbour,No Model,22283,0.8,0.74,0.81,0.85,[ [173 10][40 5] ],[ [35 8][6 9] ],K-Nearest Neighbour_No Model.pkl,55:34.8
+Bernoulli Naives Bayes Classification,No Model,22283,0.71,0.64,0.72,0.66,[ [110 5][43 4] ],[ [44 35][23 22] ],Bernoulli Naives Bayes Classification_No Model.pkl,56:24.2
+Complement Naives Bayes Classification,No Model,22283,0.76,0.67,0.77,0.78,[ [114 7][35 4] ],[ [60 25][17 24] ],Complement Naives Bayes Classification_No Model.pkl,57:47.6
+Gaussian Naives Bayes Classification,No Model,22283,0.86,0.82,0.9,0.81,[ [162 22][18 13] ],[ [43 15][10 3] ],Gaussian Naives Bayes Classification_No Model.pkl,59:19.7
+Multinomial Naives Bayes Classification,No Model,22283,0.86,0.64,0.89,0.79,[ [99 26][12 8] ],[ [56 34][15 36] ],Multinomial Naives Bayes Classification_No Model.pkl,01:41.0
+Decision Tree Classifier,No Model,22283,0.81,0.59,0.81,0.76,[ [135 15][32 4] ],[ [35 24][11 30] ],Decision Tree Classifier_No Model.pkl,02:51.9
+Support Vector Machine Classification,Chi Square (X²) Method,1000,0.73,0.8,0.8,0.58,[ [90 60][23 32] ],[ [21 27][15 18] ],Support Vector Machine Classification_Chi Square (X²) Method.pkl,11:00.3
+K-Nearest Neighbour,Chi Square (X²) Method,1000,0.8,0.83,0.83,0.9,[ [162 14][34 10] ],[ [27 28][3 8] ],K-Nearest Neighbour_Chi Square (X²) Method.pkl,11:03.3
+Bernoulli Naives Bayes Classification,Chi Square (X²) Method,500,0.69,0.7,0.91,0.69,[ [137 20][13 56] ],[ [18 24][8 10] ],Bernoulli Naives Bayes Classification_Chi Square (X²) Method.pkl,11:06.9
+Complement Naives Bayes Classification,Chi Square (X²) Method,1500,0.74,0.67,0.73,0.81,[ [146 17][54 2] ],[ [30 15][7 15] ],Complement Naives Bayes Classification_Chi Square (X²) Method.pkl,11:09.9
+Gaussian Naives Bayes Classification,Chi Square (X²) Method,1600,0.88,0.83,0.93,0.92,[ [184 13][13 13] ],[ [44 8][4 7] ],Gaussian Naives Bayes Classification_Chi Square (X²) Method.pkl,11:12.5
+Multinomial Naives Bayes Classification,Chi Square (X²) Method,1000,0.64,0.63,0.64,0.77,[ [114 2][64 2] ],[ [62 3][19 20] ],Multinomial Naives Bayes Classification_Chi Square (X²) Method.pkl,11:15.5
+Decision Tree Classifier,Chi Square (X²) Method,800,0.75,0.9,0.73,0.94,[ [90 24][34 4] ],[ [65 56][4 9] ],Decision Tree Classifier_Chi Square (X²) Method.pkl,11:18.3
+Support Vector Machine Classification,ReliefF Method,1000,0.65,0.7,0.68,0.5,[ [94 32][44 23] ],[ [19 33][19 22] ],Support Vector Machine Classification_ReliefF Method.pkl,19:42.8
+K-Nearest Neighbour,ReliefF Method,1200,0.74,0.72,0.72,0.71,[ [118 25][45 6] ],[ [50 16][20 6] ],K-Nearest Neighbour_ReliefF Method.pkl,19:43.1
+Bernoulli Naives Bayes Classification,ReliefF Method,2000,0.72,0.76,0.69,0.92,[ [144 26][65 2] ],[ [34 3][3 9] ],Bernoulli Naives Bayes Classification_ReliefF Method.pkl,19:43.3
+Complement Naives Bayes Classification,ReliefF Method,500,0.77,0.65,0.82,0.64,[ [143 12][32 15] ],[ [29 26][16 13] ],Complement Naives Bayes Classification_ReliefF Method.pkl,19:43.6
+Gaussian Naives Bayes Classification,ReliefF Method,1000,0.77,0.69,0.79,0.67,[ [174 8][45 8] ],[ [20 15][10 6] ],Gaussian Naives Bayes Classification_ReliefF Method.pkl,19:43.8
+Multinomial Naives Bayes Classification,ReliefF Method,1600,0.79,0.73,0.84,0.74,[ [154 12][30 13] ],[ [43 13][15 6] ],Multinomial Naives Bayes Classification_ReliefF Method.pkl,19:44.1
+Decision Tree Classifier,ReliefF Method,1900,0.67,0.67,0.84,0.74,[ [123 16][23 45] ],[ [34 19][12 14] ],Decision Tree Classifier_ReliefF Method.pkl,19:44.3

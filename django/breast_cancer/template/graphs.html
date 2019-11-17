@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+<section class="center-block container">
+<div class="row">
+  <div class="column">
+    <a href="{% static 'graphs/no model accuracy.png' %}" data-lightbox="data_graphs" data-title="No Method Accuracy"><img src="{% static 'graphs/no model accuracy.png' %}"></a>
+    <a href="{% static 'graphs/no model precision.png' %}" data-lightbox="data_graphs"><img src="{% static 'graphs/no model precision.png' %}"> </a>   
+  </div>
+  <div class="column">
+    <a href="{% static 'graphs/chi square accuracy.png' %}" data-lightbox="data_graphs"><img src="{% static 'graphs/chi square accuracy.png' %}"></a>
+    <a href="{% static 'graphs/chi square precision.png' %}" data-lightbox="data_graphs"><img src="{% static 'graphs/chi square precision.png' %}">  </a>  
+  </div>
+  <div class="column">
+    <a href="{% static 'graphs/relieff accuracy.png' %}" data-lightbox="data_graphs"><img src="{% static 'graphs/relieff accuracy.png' %}"></a>
+    <a href="{% static 'graphs/relieff precision.png' %}" data-lightbox="data_graphs"><img src="{% static 'graphs/relieff precision.png' %}"></a>
+   
+  </div>
+  <div class="column">
+    <a href="{% static 'graphs/accuracy with selected models.png' %}" data-lightbox="data_graphs"><img src="{% static 'graphs/accuracy with selected models.png' %}"></a>
+    <a href="{% static 'graphs/precision with selected models.png' %}" data-lightbox="data_graphs"><img src="{% static 'graphs/precision with selected models.png' %}"></a>   
+  </div>
+</div>
+</section>
+<style>
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 45%;
+  max-width: 45%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 70%;
+    max-width: 70%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+</style>
+{% endblock content %}

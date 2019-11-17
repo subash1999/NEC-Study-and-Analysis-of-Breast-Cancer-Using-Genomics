@@ -23,5 +23,11 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),    
     path('predict/', include('predict.urls')),
-    path('', TemplateView.as_view(template_name='welcome.html'))
+    path('', include('predict.urls')),
+    # path('', TemplateView.as_view(template_name='welcome.html'),{
+    #     'page_title':"Welcome"
+    # }),
+    path('graphs', TemplateView.as_view(template_name='graphs.html'),{
+        'page_title':"Graphs"
+    }),
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
