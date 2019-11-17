@@ -1,0 +1,6 @@
+#username, #save_username_btn, #cancel_username_btn{
+	display: none;
+}
+#username_label{
+	font-size: 120%;
+}

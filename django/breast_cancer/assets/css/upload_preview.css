@@ -1,0 +1,35 @@
+#image-preview {
+	background-size: cover;
+	background-position: center center;
+	width: 220px;
+	height: 220px;
+	position: relative;
+	overflow: hidden;
+	background-color: #ffffeb;
+	color: #ecf0f1;
+}
+#image-preview input {
+	line-height: 150px;
+	font-size: 150px;
+	cursor: pointer;
+	position: absolute;
+	opacity: 0;
+	z-index: 10;
+}
+#image-preview label {
+	position: absolute;
+	z-index: 5;
+	opacity: 0.6;
+	background-color: #bdc3c7;
+	width: 140px;
+	height: 40px;
+	font-size: 17px;
+	line-height: 40px;
+	text-transform: uppercase;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	text-align: center;
+}

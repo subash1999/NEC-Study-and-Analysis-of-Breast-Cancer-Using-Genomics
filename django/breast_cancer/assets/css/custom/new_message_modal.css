@@ -1,0 +1,8 @@
+/* Important part */
+.modal-dialog{
+  overflow-y: initial !important
+}
+.tab-pane{
+  height: 260px;
+  overflow-y: auto;
+}

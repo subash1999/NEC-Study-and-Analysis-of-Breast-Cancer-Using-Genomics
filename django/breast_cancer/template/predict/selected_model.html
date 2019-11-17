@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+<h2>Predict Using Selected Model</h2>
+<section class="container" style="opacity: 2;">
+    <div class="card primary">
+    <div class="card-header">
+    <h3> You have Selected Row Index : {{ row_index }}</h3>
+    </div>
+    <div class="card-body">
+    <p>Index : {{ index }}</p>
+    <p>Classification Model Name : {{ row.Clf_Model }}</p>
+    <p>Top Ranking Method : {{ row.Top_Ranking_Model }}</p>
+    <p>Number of Genes Selected : {{ row.No_Of_Genes }}</p>
+    <p>Train Accuracy : {{ row.Train_Acc }}</p>
+    <p>Test Accuracy : {{ row.Test_Acc }}</p>
+    </div>
+    </div>
+	
+    
+    <hr><hr>
+    <h3>Select Row Index of Data To Predict :<h3>
+    <small>On Change the page will refresh and give the prediction for the selected index</small>
+    <select class="form-group form-control" id="row_index" name="row_index">
+    {% for i in prediction_options %}
+        {% if row_index == i %}
+        <option value="{{ i }}" selected>{{ i }}</option>
+        {% else %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endif %}
+    {% endfor %}
+    </select>
+    <h3><u>Result </u></h3>
+    <h4>Predicted Output : {{ predicted_result }}</h4>
+    <h4>Actual Output : {{ predicted_result }}</h4>
+	
+</section>
+<!-- Modal -->
+<div class="modal fade" id="waiting_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Wait For The Result</h5>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-border text-success" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-border text-warning" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-border text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-border text-light" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-border text-dark" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$( "#row_index" ).change(function() {
+  var row_index = $(this).children("option:selected").val();
+  $('#waiting_modal').modal('show');
+  window.location.replace('/predict/selected_model/{{ index }}/'+row_index)
+});
+</script>
+{% endblock content %}

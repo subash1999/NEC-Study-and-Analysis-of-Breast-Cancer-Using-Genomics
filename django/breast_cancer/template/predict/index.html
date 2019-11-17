@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>List of Best Trained Models</h1>
+<section class="container">
+	<style>
+	.my-custom-scrollbar {
+		position: relative;
+		height: 90%;
+		overflow: auto;
+	}
+	.table-wrapper-scroll-y {
+		display: block;
+		width : 100%;
+	}
+	</style>
+	<div class="my-custom-scrollbar table-wrapper-scroll-y">
+	<table class="table table-bordered table-hover table-responsive table-dark">
+		<thead>
+			<th>S.N</th>
+			{% for x in best_model_columns %}
+			<th>{{ x }}</th>			
+			{% endfor %}
+			<th>Predict Using</th>
+		</thead>
+		<tbody>
+			{% for index,row in best_model_rows %}
+			<tr>
+				<td>{{ index }}</td>
+			{% for x in row %}
+				<td>{{ x }}</td>
+			{% endfor %}
+				<td><a href="{% url 'predict:selected_model' index 0 %}" class="btn btn-info" >Select Model</a></td>
+			<tr>
+			{% endfor %}
+		</tbody>
+		
+	</table>
+	</div>
+	
+</section>
+{% endblock content %}

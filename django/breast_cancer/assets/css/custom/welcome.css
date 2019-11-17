@@ -1,0 +1,15 @@
+	body,html{
+		/*height: 100%;*/
+		margin: 0;
+		background: #7F7FD5;
+		background: -webkit-linear-gradient(to right top, #3d363a, #51404f, #614b68, #6a5885, #6b68a5, #5972b2, #3f7bbc, #0085c3, #0085b2, #00839d, #007f88, #237a74);		
+		background-image: linear-gradient(to right top, #3d363a, #51404f, #614b68, #6a5885, #6b68a5, #5972b2, #3f7bbc, #0085c3, #0085b2, #00839d, #007f88, #237a74);
+		background-repeat:no-repeat;
+		background-attachment: fixed;		
+	}
+	.card{
+		border-radius: 15px !important;
+		background-color: rgba(0,0,0,0.4) !important;
+	}
+
+/*

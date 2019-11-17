@@ -1,0 +1,8 @@
+Clf_Model,Top_Ranking_Model,No_Of_Genes,Train_Acc,Test_Acc,File_Name,Time
+Support Vector Machine Classification,No Model,22283,1.0,0.603448275862069,Support Vector Machine Classification_No Model.pkl,2019-11-13 09:49:31.838454
+K-Nearest Neighbour,No Model,22283,0.7243816254416962,0.6666666666666666,K-Nearest Neighbour_No Model.pkl,2019-11-13 09:49:50.105902
+Bernoulli Naives Bayes Classification,No Model,22283,0.6325088339222615,0.0,Bernoulli Naives Bayes Classification_No Model.pkl,2019-11-13 09:50:08.629211
+Complement Naives Bayes Classification,No Model,22283,0.696113074204947,0.3333333333333333,Complement Naives Bayes Classification_No Model.pkl,2019-11-13 09:50:27.791541
+Gaussian Naives Bayes Classification,No Model,22283,0.9540636042402827,1.0,Gaussian Naives Bayes Classification_No Model.pkl,2019-11-13 09:50:41.480460
+Multinomial Naives Bayes Classification,No Model,22283,0.6996466431095406,0.6666666666666666,Multinomial Naives Bayes Classification_No Model.pkl,2019-11-13 09:50:56.215588
+Decision Tree Classifier,No Model,22283,1.0,0.5517241379310345,Decision Tree Classifier_No Model.pkl,2019-11-13 09:51:13.202915

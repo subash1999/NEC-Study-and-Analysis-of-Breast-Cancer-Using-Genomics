@@ -1,0 +1,50 @@
+body,html{
+	margin: 0;
+
+	background: #FEAC5E;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	background-repeat:no-repeat;
+	background-attachment: fixed;	
+
+	
+}
+.searched_user{
+	border-width:1px !important;
+	border-style: solid !important;
+}
+
+.searched_user_img{
+	height: 98px !important;
+	width: 98px !important;
+}
+#chat_div{
+
+	min-width: 1000px;
+	/*overflow-x: scroll;*/
+}
+.card{
+	border-radius: 50px !important;
+	background-color: rgba(255,255,255,0.25) !important;
+	/*margin-bottom:10px;*/
+}
+.card-header{
+	border-style: none;
+	border-radius: 3rem !important;
+
+}
+.card-body{
+	min-height: 320px;
+	overflow-y: scroll;
+}
+.card-footer{
+	border-style: none;
+	border-radius: 10rem !important;
+	margin : 10px;
+}
+h3{
+	color:white;
+	font-style: italic;
+}
+

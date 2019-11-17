@@ -1,0 +1,25 @@
+
+/*for the register section*/
+.register_card{
+	color:white;
+}
+h2.register_title{
+	text-align: center;
+}
+h3 {
+	color:  white;
+	margin: auto;
+	text-align: center;
+}
+section form i{
+	color:aqua;
+}
+h2.login_title{
+	text-align: center;
+}
+.card-footer{
+	text-align: center;
+}
+.card-footer a{
+	color:white;
+}
