@@ -32,7 +32,7 @@ class PredictDjango():
         (x,y) = self.project3_parent.getXYOfData(self.selected_df)
         to_predict = x[test_index]
         actual_result = y[test_index]
-
+        print('Selected Model :',self.selectModel)
         predict_result = self.selected_model.predict(to_predict)
         return {
             'actual' : actual_result,

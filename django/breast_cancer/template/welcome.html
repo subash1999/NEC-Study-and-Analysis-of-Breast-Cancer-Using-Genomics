@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="center-block container">
+
+<div class="center-block text-center">
+<h1>WELCOME</h1>
+<a href="{% url 'predict:index' %}" class="btn btn-block btn-success mt-5">GO To Trained Models</a>
+</div>
+</section>
+{% endblock content %}
